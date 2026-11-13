@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Sổ Kèm Mẫu</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap">
+<style>
+/* Layout: sổ tay một cột, thẻ học sinh ở trên, thanh tab dính, mỗi tab là một bước trong vòng dạy */
+:root{
+  --paper:#F5F7FA; --sheet:#FFFFFF; --ink:#18263A; --muted:#5A6A80; --line:#D9E1EB;
+  --accent:#0B7A64; --accent-soft:#DDF1EB; --mark:#F3CD4B; --mark-soft:#FDF4D3;
+  --bad:#B4412F; --bad-soft:#F8E3DF; --grid:rgba(24,38,58,.06);
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0F151D; --sheet:#17202B; --ink:#E5EBF2; --muted:#9AA9BC; --line:#2A3746;
+  --accent:#4CC3A5; --accent-soft:#163A33; --mark:#E8C24A; --mark-soft:#3A3218;
+  --bad:#F08A76; --bad-soft:#40211C; --grid:rgba(229,235,242,.05); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0F151D; --sheet:#17202B; --ink:#E5EBF2; --muted:#9AA9BC; --line:#2A3746;
+  --accent:#4CC3A5; --accent-soft:#163A33; --mark:#E8C24A; --mark-soft:#3A3218;
+  --bad:#F08A76; --bad-soft:#40211C; --grid:rgba(229,235,242,.05); color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:1.7rem;line-height:1.15}
+h2{font-size:1.2rem}
+.eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+.demo{font-size:.8rem;color:var(--muted);background:var(--mark-soft);border-radius:8px;padding:8px 12px;margin-bottom:14px}
+.student{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:16px;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:18px 18px;display:grid;gap:10px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);font-size:.88rem}
+.exam{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.exam b{font-family:var(--display);font-size:1.6rem;color:var(--accent);font-variant-numeric:tabular-nums}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);margin:14px calc(-1*max(16px,env(safe-area-inset-left,0px))) 0;padding:8px max(16px,env(safe-area-inset-left,0px));overflow-x:auto;display:flex;gap:6px;border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+nav button{flex:0 0 auto;border:1px solid var(--line);background:var(--sheet);color:var(--ink);font:inherit;font-size:.85rem;padding:7px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+nav button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+nav button small{color:inherit;opacity:.6;margin-right:4px;font-variant-numeric:tabular-nums}
+section{display:grid;gap:14px;margin-top:18px}
+.hint{color:var(--muted);font-size:.88rem;margin:0}
+.panel{background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:10px;min-width:0}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.lock{opacity:.75;border-style:dashed}.lock summary{cursor:default}
+.pro{background:var(--ink);color:var(--paper);border-radius:12px;padding:16px;display:grid;gap:10px}
+.pro h2{color:var(--paper)}.pro .hint{color:var(--paper);opacity:.8}
+.cmp td:nth-child(n+2),.cmp th:nth-child(n+2){text-align:center}
+.chip{display:inline-block;font-size:.75rem;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.s0{background:var(--line);color:var(--muted)} .s1{background:var(--mark-soft);color:var(--ink);box-shadow:inset 0 0 0 1px var(--mark)} .s2{background:var(--accent-soft);color:var(--accent)}
+.bad{background:var(--bad-soft);color:var(--bad)}
+.chapter summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:10px;align-items:center;font-weight:600}
+.chapter summary::-webkit-details-marker{display:none}
+.dang{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:7px 0;border-top:1px dashed var(--line)}
+.dang span{min-width:0}
+.stat{cursor:pointer;border:0;font:inherit}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+.tbl{overflow-x:auto}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+td.num{font-variant-numeric:tabular-nums;font-weight:600}
+form{display:grid;gap:10px}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+label{display:grid;gap:4px;font-size:.8rem;color:var(--muted);font-weight:500}
+input,select,textarea{font:inherit;font-size:.92rem;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:0}
+.checks{display:flex;flex-wrap:wrap;gap:6px}
+.checks label{display:flex;align-items:center;gap:6px;color:var(--ink);font-size:.82rem;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:5px 9px;cursor:pointer}
+.btn{font:inherit;font-weight:600;font-size:.88rem;border:0;border-radius:8px;padding:9px 14px;background:var(--accent);color:var(--sheet);cursor:pointer;justify-self:start}
+.ghost{background:transparent;color:var(--muted);border:1px solid var(--line);font-weight:500;padding:5px 10px;font-size:.8rem}
+.gap{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.gap:first-child{border-top:0}
+.count{font-family:var(--display);font-size:1.5rem;line-height:1;color:var(--bad);font-variant-numeric:tabular-nums;min-width:2ch;text-align:center}
+.gap.done .count{color:var(--accent)}
+.gap .ctrl{grid-column:2;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.8rem;color:var(--muted)}
+.flow b{color:var(--ink);font-weight:600}
+svg text{fill:var(--muted);font-size:10px;font-family:var(--body)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>
+.lv{display:grid;gap:8px;padding:10px 0;border-top:1px dashed var(--line)}
+.lv h4{margin:0;font-size:.9rem;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.lv p{margin:0;font-size:.9rem}
+.ex{background:var(--paper);border-radius:8px;padding:8px 10px;font-size:.9rem}
+.ex b{color:var(--accent)}
+.lv ol{margin:0;padding-left:20px;display:grid;gap:4px;font-size:.9rem}
+.ans{color:var(--accent);font-weight:600}
+.l0{background:var(--line);color:var(--ink)}.l1{background:var(--accent-soft);color:var(--accent)}.l2{background:var(--mark-soft);color:var(--ink);box-shadow:inset 0 0 0 1px var(--mark)}.l3{background:var(--bad-soft);color:var(--bad)}
+.dg{border-top:1px solid var(--line);padding-top:10px}
+.dg>summary{cursor:pointer;font-weight:600;display:flex;justify-content:space-between;gap:10px;align-items:center;list-style:none}
+.dg>summary::-webkit-details-marker{display:none}
+.grid4{display:grid;gap:8px}
+.grid4 .dn{font-size:.85rem;font-weight:600}
+.route{font-size:.82rem;color:var(--muted)}
+.route b{color:var(--ink)}
+.showans summary{cursor:pointer;font-size:.8rem;color:var(--muted)}
+</style><style>
+.subj{display:flex;gap:8px;flex-wrap:wrap}
+.subj button{font:inherit;font-size:.9rem;font-weight:600;border:1px solid var(--line);background:var(--sheet);color:var(--ink);border-radius:10px;padding:8px 14px;cursor:pointer}
+.subj button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft);color:var(--accent)}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.sc{background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:6px;text-align:left;font:inherit;color:var(--ink);cursor:pointer}
+.sc[aria-current="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.sc .big{font-family:var(--display);font-size:1.3rem;font-variant-numeric:tabular-nums}
+</style>
+<div class="wrap">
+  <div class="demo"><b>Dự án cá nhân:</b> sổ theo dõi việc học cho gia sư dạy kèm. Theo dõi chương trình theo dạng bài và 4 mức độ, lộ trình buổi học, kết quả kiểm tra, lỗ hổng kiến thức và nhận xét theo tháng cho từng học sinh. <b>Dữ liệu trên trang là dữ liệu mẫu</b>; bạn có thể bấm thử, mọi thay đổi chỉ lưu trên trình duyệt của bạn.</div>
+  <div class="row" id="stuBar" style="margin-bottom:10px;justify-content:flex-start"></div>
+  <header class="student">
+    <span class="eyebrow">Sổ Kèm · sổ theo dõi việc học</span>
+    <h1 id="stu"></h1>
+    <div class="meta" id="stuMeta"></div>
+    <div class="subj" id="subj"></div>
+    <div class="exam" id="examBox"></div>
+  </header>
+  <nav role="tablist" id="tabs"></nav>
+  <main id="view"></main>
+  <div class="panel" style="margin-top:24px"><h2>Sao lưu dữ liệu</h2>
+   <p class="hint">Dữ liệu chỉ nằm trên trình duyệt này, có thể mất khi xoá lịch sử duyệt web. Thỉnh thoảng bấm "Sao chép dữ liệu" rồi dán vào Ghi chú hoặc Zalo. Khi cần, dán lại vào ô dưới và bấm "Khôi phục".</p>
+   <div class="row" style="justify-content:flex-start"><button class="btn" id="copyData">Sao chép dữ liệu</button><button class="ghost btn" id="loadData">Khôi phục từ ô dưới</button></div>
+   <textarea id="dataBox" rows="3" placeholder="Dán dữ liệu đã sao lưu vào đây"></textarea>
+   <p class="hint" id="dataMsg" aria-live="polite"></p>
+   <button class="ghost btn" id="reset">Quay về dữ liệu ví dụ</button></div>
+</div>
+<script>
+const LV=["Nhận biết","Thông hiểu","Vận dụng","Vận dụng cao"];
+const L=(how,ex,bt)=>({how,ex,bt});
+const SUBJ={
+toan8:{name:"Toán 8",book:"Kết nối tri thức",unit:"Chương",
+ chapters:["Chương I. Đa thức","Chương II. Hằng đẳng thức đáng nhớ và ứng dụng","Chương III. Tứ giác","Chương IV. Định lí Thalès","Chương V. Dữ liệu và biểu đồ","Chương VI. Phân thức đại số","Chương VII. Phương trình bậc nhất và hàm số bậc nhất","Chương VIII. Mở đầu về tính xác suất của biến cố","Chương IX. Tam giác đồng dạng","Chương X. Một số hình khối trong thực tiễn"],
+ dang:[
+ {name:"Thu gọn đơn thức, đa thức",lv:[
+  L("Nhân các hệ số với nhau; các luỹ thừa cùng biến thì cộng số mũ.","2x²y · (−3xy³) = −6x³y⁴",[["4xy · 5x²","20x³y"],["(−2a²b) · 3ab²","−6a³b³"]]),
+  L("Cộng các hạng tử đồng dạng, rồi tìm bậc của đa thức (bậc của hạng tử có bậc cao nhất).","3x²y − 2xy + x²y + 5xy = 4x²y + 3xy, bậc 3",[["x³ − 2x²y + x³ + 3x²y","2x³ + x²y, bậc 3"],["5xy² − xy² + 2 − 3","4xy² − 1, bậc 3"]]),
+  L("Thu gọn trước, sau đó mới thay giá trị của biến để tính.","4x²y + 3xy tại x = 1, y = −2: 4·1·(−2) + 3·1·(−2) = −14",[["2x³ + x²y tại x = −1, y = 3","1"],["x²y − xy + x²y tại x = 2, y = 1","6"]]),
+  L("Dùng tính chất x² ≥ 0 với mọi x để chứng minh hoặc tìm giá trị nhỏ nhất.","x²y² + 1 ≥ 1 > 0 với mọi x, y",[["Chứng minh 2x² + 3y⁴ + 1 > 0 với mọi x, y","2x² ≥ 0, 3y⁴ ≥ 0 nên tổng ≥ 1 > 0"],["Tìm giá trị nhỏ nhất của x²y² + 3","3, khi x = 0 hoặc y = 0"]])]},
+ {name:"Cộng, trừ đa thức",lv:[
+  L("Bỏ ngoặc (giữ nguyên dấu khi trước ngoặc là dấu +), rồi cộng các hạng tử đồng dạng.","(2x² + 3x) + (x² − x) = 3x² + 2x",[["(x²y − 2) + (3x²y + 5)","4x²y + 3"],["(a + 2b) + (3a − b)","4a + b"]]),
+  L("Trước ngoặc có dấu − thì đổi dấu mọi hạng tử trong ngoặc khi bỏ ngoặc.","(5x² − 2xy) − (3x² − 4xy) = 2x² + 2xy",[["(a² − 3ab + b²) − (2a² − ab)","−a² − 2ab + b²"],["(4x − y) − (x − 3y)","3x + 2y"]]),
+  L("Tìm đa thức chưa biết bằng cách chuyển vế như tìm x.","M + (x² − 2y) = 3x² + y ⇒ M = 2x² + 3y",[["M − (2xy − 1) = xy + 4","M = 3xy + 3"],["(x² + 1) − N = 2x² − x","N = −x² + x + 1"]]),
+  L("Tính tổng/hiệu hai đa thức, rồi giải điều kiện đề bài cho.","A = x² − 2x + 1, B = −x² + 3x. A + B = x + 1 = 0 ⇒ x = −1",[["A = 2x² + x, B = −2x² + 3x − 8. Tìm x để A + B = 0","x = 2"],["A = x² + 5, B = x² − 2x − 1. Tìm x để A − B = 0","x = −3"]])]},
+ {name:"Nhân đa thức",lv:[
+  L("Đơn thức nhân với từng hạng tử của đa thức rồi cộng lại.","2x(x² − 3) = 2x³ − 6x",[["−3xy(x − 2y)","−3x²y + 6xy²"],["x²(2x + 1)","2x³ + x²"]]),
+  L("Mỗi hạng tử của đa thức này nhân với từng hạng tử của đa thức kia, rồi thu gọn.","(x + 2)(x − 5) = x² − 3x − 10",[["(2x − 1)(x + 3)","2x² + 5x − 3"],["(x − 4)(x + 4)","x² − 16"]]),
+  L("Nhân, thu gọn biểu thức rồi tính giá trị hoặc tìm x.","(x + 1)(x − 1) − x(x + 2) = −2x − 1; tại x = 3 bằng −7",[["Tìm x: (x + 2)(x − 3) − x(x − 4) = 6","x = 4"],["Rút gọn rồi tính tại x = −2: x(x + 3) − (x + 1)(x + 2)","−2"]]),
+  L("Chứng minh giá trị biểu thức không phụ thuộc vào biến: rút gọn đến khi chỉ còn hằng số.","(x − 1)(x + 3) − x(x + 2) = −3",[["(2x + 1)(x − 2) − x(2x − 3)","−2"],["(x + 5)(x − 1) − x(x + 4)","−5"]])]},
+ {name:"Chia đa thức cho đơn thức",lv:[
+  L("Chia hệ số cho hệ số; luỹ thừa cùng biến thì trừ số mũ.","12x⁴y³ : 3x²y = 4x²y²",[["−15a³b² : 5ab","−3a²b"],["8x⁵ : (−2x²)","−4x³"]]),
+  L("Chia từng hạng tử của đa thức cho đơn thức rồi cộng kết quả.","(6x³ − 9x² + 3x) : 3x = 2x² − 3x + 1",[["(8x³y² − 4x²y) : 2x²y","4xy − 2"],["(10a⁴ − 5a²) : 5a²","2a² − 1"]]),
+  L("Đơn thức A chia hết cho đơn thức B khi mỗi biến của B đều có trong A với số mũ không nhỏ hơn.","6xⁿy³ chia hết cho 2x²y khi n ≥ 2 (n tự nhiên)",[["Tìm n tự nhiên để (xⁿ − 3x⁴) chia hết cho x³","n ≥ 3"],["Tìm n tự nhiên để 5x⁴yⁿ chia hết cho x²y²","n ≥ 2"]]),
+  L("Thực hiện phép chia để rút gọn, rồi mới tính giá trị.","(4x³y² − 6x²y³) : 2x²y² = 2x − 3y; tại x = 2, y = 1 bằng 1",[["(x⁴y² − x³y) : x²y tại x = −1, y = 2","x²y − x = 3"],["(9x³ − 6x²) : 3x² tại x = 4","3x − 2 = 10"]])]}
+ ]},
+khtn8:{name:"KHTN 8",book:"Kết nối tri thức",unit:"Chương",
+ chapters:["Chương I. Phản ứng hoá học","Chương II. Một số hợp chất thông dụng","Chương III. Khối lượng riêng và áp suất","Chương IV. Tác dụng làm quay của lực","Chương V. Điện","Chương VI. Nhiệt","Chương VII. Sinh học cơ thể người","Chương VIII. Sinh vật và môi trường"],
+ dang:[
+ {name:"Mol, khối lượng mol, thể tích khí",lv:[
+  L("Số mol n = m : M (m là khối lượng tính bằng gam, M là khối lượng mol).","11,2 g Fe (M = 56): n = 11,2 : 56 = 0,2 mol",[["Tính số mol của 8 g O₂","0,25 mol"],["Tính khối lượng của 0,5 mol H₂O","9 g"]]),
+  L("Ở điều kiện chuẩn (25 °C, 1 bar), thể tích khí V = n × 24,79 (lít).","0,5 mol CO₂ chiếm 0,5 × 24,79 = 12,395 L",[["Thể tích của 2 mol N₂ ở điều kiện chuẩn","49,58 L"],["4,958 L khí H₂ (điều kiện chuẩn) là bao nhiêu mol?","0,2 mol"]]),
+  L("Tỉ khối của khí A so với khí B: d(A/B) = M(A) : M(B). So với không khí thì chia cho 29.","d(CO₂/H₂) = 44 : 2 = 22, CO₂ nặng gấp 22 lần H₂",[["Khí O₂ nặng hay nhẹ hơn không khí, bao nhiêu lần?","Nặng hơn, khoảng 1,1 lần (32 : 29)"],["Khí X có tỉ khối so với H₂ là 16. Tính M(X)","32 g/mol"]]),
+  L("Kết hợp nhiều công thức: số phân tử = n × 6,022 × 10²³; cùng thể tích khí thì cùng số mol.","0,5 mol H₂O có 0,5 × 6,022 × 10²³ = 3,011 × 10²³ phân tử",[["Tính số nguyên tử H trong 9 g H₂O","6,022 × 10²³ nguyên tử (0,5 mol H₂O chứa 1 mol H)"],["12,395 L CO₂ và 12,395 L O₂ (điều kiện chuẩn): khí nào nặng hơn, hơn bao nhiêu gam?","CO₂ nặng hơn 6 g (22 g so với 16 g)"]])]},
+ {name:"Nồng độ dung dịch",lv:[
+  L("Nồng độ phần trăm C% = m(chất tan) : m(dung dịch) × 100%, với m(dung dịch) = m(chất tan) + m(dung môi).","10 g muối trong 50 g dung dịch: C% = 20%",[["Hoà tan 15 g đường vào 135 g nước. Tính C%","10%"],["Khối lượng NaCl trong 200 g dung dịch NaCl 5%","10 g"]]),
+  L("Nồng độ mol C(M) = n : V, với V tính bằng lít.","0,2 mol NaOH trong 500 mL dung dịch: C(M) = 0,2 : 0,5 = 0,4 M",[["Hoà tan 4 g NaOH thành 200 mL dung dịch. Tính C(M)","0,5 M"],["Số mol HCl trong 250 mL dung dịch HCl 2 M","0,5 mol"]]),
+  L("Pha loãng: lượng chất tan không đổi, chỉ có lượng dung dịch tăng.","Thêm nước vào 100 g dung dịch 20% để được 10%: m(dd) mới = 200 g, thêm 100 g nước",[["Thêm 100 g nước vào 50 g dung dịch 30%. Tính C% mới","10%"],["Cần thêm bao nhiêu mL nước vào 200 mL dung dịch 1 M để được 0,5 M?","200 mL"]]),
+  L("Trộn hai dung dịch cùng chất tan: cộng khối lượng chất tan và cộng khối lượng dung dịch.","100 g dd 10% + 100 g dd 30%: (10 + 30) : 200 = 20%",[["Trộn 200 g dd 15% với 300 g dd 5%. Tính C%","9%"],["Ở 25 °C, độ tan NaCl là 36 g trong 100 g nước. Tính C% dung dịch bão hoà","khoảng 26,5% (36 : 136)"]])]},
+ {name:"Lập phương trình hoá học, bảo toàn khối lượng",lv:[
+  L("Định luật bảo toàn khối lượng: tổng khối lượng chất tham gia bằng tổng khối lượng sản phẩm.","5,6 g Fe + 3,2 g S tạo ra 8,8 g FeS",[["Đốt 2,4 g Mg thu được 4 g MgO. Tính khối lượng O₂ đã phản ứng","1,6 g"],["Nung 10 g CaCO₃ thu được 5,6 g CaO. Tính khối lượng CO₂","4,4 g"]]),
+  L("Cân bằng phương trình: chọn hệ số sao cho số nguyên tử mỗi nguyên tố ở hai vế bằng nhau.","2H₂ + O₂ → 2H₂O",[["Al + O₂ → Al₂O₃","4Al + 3O₂ → 2Al₂O₃"],["Fe + HCl → FeCl₂ + H₂","Fe + 2HCl → FeCl₂ + H₂"]]),
+  L("Phương trình nhiều chất: cân bằng nguyên tố xuất hiện ít lần trước, nhóm nguyên tử (như SO₄) coi như một khối.","Fe₂O₃ + 3CO → 2Fe + 3CO₂",[["P + O₂ → P₂O₅","4P + 5O₂ → 2P₂O₅"],["Al + H₂SO₄ → Al₂(SO₄)₃ + H₂","2Al + 3H₂SO₄ → Al₂(SO₄)₃ + 3H₂"]]),
+  L("Cân bằng chất hữu cơ (cân bằng C, rồi H, cuối cùng O) và kết hợp bảo toàn khối lượng.","CH₄ + 2O₂ → CO₂ + 2H₂O",[["C₂H₄ + O₂ → CO₂ + H₂O","C₂H₄ + 3O₂ → 2CO₂ + 2H₂O"],["Đốt 1,6 g chất X cần 6,4 g O₂, thu được 4,4 g CO₂ và nước. Tính khối lượng nước","3,6 g"]])]},
+ {name:"Tính theo phương trình hoá học",lv:[
+  L("Tỉ lệ số mol các chất bằng tỉ lệ hệ số trong phương trình.","Zn + 2HCl → ZnCl₂ + H₂: 0,1 mol Zn tạo 0,1 mol H₂",[["2H₂ + O₂ → 2H₂O. 0,4 mol H₂ tạo bao nhiêu mol H₂O?","0,4 mol"],["Cùng phản ứng trên, 0,4 mol H₂ cần bao nhiêu mol O₂?","0,2 mol"]]),
+  L("Đổi khối lượng ra mol, tính theo tỉ lệ, rồi đổi kết quả ra khối lượng hoặc thể tích.","6,5 g Zn → 0,1 mol → 0,1 mol H₂ → 2,479 L (điều kiện chuẩn)",[["Cho 2,4 g Mg tác dụng hết với HCl. Tính thể tích H₂ (điều kiện chuẩn)","2,479 L"],["Đốt 3,1 g P: 4P + 5O₂ → 2P₂O₅. Tính khối lượng P₂O₅","7,1 g"]]),
+  L("Bài toán chất dư: so sánh số mol thực tế với tỉ lệ phương trình, tính theo chất hết.","0,2 mol Zn + 0,3 mol HCl: Zn cần 0,4 mol HCl nên HCl hết, tạo 0,15 mol H₂",[["0,1 mol Fe + 0,3 mol HCl. Chất nào dư, dư bao nhiêu?","HCl dư 0,1 mol; tạo 0,1 mol H₂"],["4,8 g Mg + 0,3 mol HCl. Tính số mol H₂","0,15 mol (HCl hết)"]]),
+  L("Hiệu suất H = lượng thực tế : lượng lí thuyết × 100%.","Nung 10 g CaCO₃ thu 4,48 g CaO, lí thuyết 5,6 g: H = 80%",[["Nung 20 g CaCO₃, H = 90%. Tính khối lượng CaO thu được","10,08 g"],["Đốt 2,4 g Mg thu 3,6 g MgO. Tính hiệu suất","90%"]])]}
+ ]},
+anh8:{name:"Tiếng Anh 8",book:"Global Success",unit:"Unit",
+ chapters:["Unit 1. Leisure time","Unit 2. Life in the countryside","Unit 3. Teenagers","Unit 4. Ethnic groups of Viet Nam","Unit 5. Our customs and traditions","Unit 6. Lifestyles","Unit 7. Environmental protection","Unit 8. Shopping","Unit 9. Natural disasters","Unit 10. Communication in the future","Unit 11. Science and technology","Unit 12. Life on other planets"],
+ dang:[
+ {name:"Từ vựng: hoạt động giải trí",lv:[
+  L("Nhận biết nghĩa của cụm từ chỉ hoạt động giải trí.","do DIY = tự làm đồ thủ công",[["hang out with friends","đi chơi với bạn bè"],["surf the net","lướt mạng"]]),
+  L("Chọn từ đúng để điền vào câu theo ngữ cảnh.","My dad loves ___ DIY. He made a bookshelf. → doing",[["We often ___ out at the shopping mall at weekends.","hang"],["She is keen ___ playing chess.","on"]]),
+  L("Dùng đúng động từ đi kèm: play + môn có bóng, do + môn võ, yoga, go + hoạt động đuôi -ing.","play badminton · do yoga · go cycling",[["___ judo","do"],["___ skateboarding","go"]]),
+  L("Tự viết câu về sở thích, dùng đúng cụm từ.","In my free time, I usually hang out with my friends or do DIY.",[["Viết 1 câu dùng 'be crazy about'","Gợi ý: My brother is crazy about playing video games."],["Viết 1 câu dùng 'spend time + V-ing'","Gợi ý: I spend time reading books every evening."]])]},
+ {name:"Like, love, hate… + V-ing / to V",lv:[
+  L("Sau like, love, hate, prefer có thể dùng V-ing hoặc to V.","I love reading. = I love to read.",[["She hates (get) up early.","getting / to get"],["They like (play) football.","playing / to play"]]),
+  L("Sau enjoy, dislike, detest, fancy chỉ dùng V-ing.","He enjoys cooking.",[["My sister dislikes (wash) the dishes.","washing"],["Do you fancy (go) to the cinema?","going"]]),
+  L("Chia đúng khi một câu có cả hai nhóm động từ.","I enjoy swimming, but I prefer playing / to play tennis.",[["Mai detests (do) homework at night.","doing"],["We love (spend) time with our grandparents.","spending / to spend"]]),
+  L("Tìm và sửa lỗi sai về dạng động từ.","I enjoy to watch cartoons. → watching",[["She dislikes to go shopping.","to go → going"],["Do you fancy to play chess?","to play → playing"]])]},
+ {name:"Phát âm /ʊ/ và /uː/",lv:[
+  L("/ʊ/ là âm ngắn (good, book); /uː/ là âm dài (mood, school).","book /bʊk/ · food /fuːd/",[["look","/ʊ/"],["cool","/uː/"]]),
+  L("Chọn từ có phần gạch chân phát âm khác các từ còn lại.","good · foot · food · wood → food",[["school · cook · pool · moon","cook (/ʊ/)"],["put · push · full · rude","rude (/uː/)"]]),
+  L("Phân loại từ theo âm.","foot, sugar: /ʊ/ · room, juice: /uː/",[["pull · blue","pull /ʊ/ · blue /uː/"],["could · shoe","could /ʊ/ · shoe /uː/"]]),
+  L("Tìm các từ chứa âm /ʊ/ và /uː/ trong cả câu.","Look at the cool pool. → /ʊ/: look · /uː/: cool, pool",[["I took a good book to school.","/ʊ/: took, good, book · /uː/: school"],["Put the new shoes in the room.","/ʊ/: put · /uː/: new, shoes, room"]])]},
+ {name:"Viết đoạn văn về sở thích",lv:[
+  L("Mở đoạn bằng câu chủ đề nêu sở thích.","My favourite leisure activity is doing DIY.",[["Viết câu chủ đề về playing badminton","Gợi ý: I really love playing badminton in my free time."],["Viết câu chủ đề về reading comics","Gợi ý: Reading comics is my favourite hobby."]]),
+  L("Nêu lí do bằng because.","I like it because it helps me relax.",[["Nối: I like cycling / it keeps me fit","I like cycling because it keeps me fit."],["Nối: I enjoy DIY / I can make useful things","I enjoy DIY because I can make useful things."]]),
+  L("Sắp xếp ý bằng từ nối First, Also, Finally.","First, it is fun. Also, it helps me relax. Finally, I can do it with my friends.",[["Viết 2 lí do có First và Also cho sở thích nấu ăn","Gợi ý: First, I can make tasty food. Also, cooking helps me relax."],["Viết câu kết bắt đầu bằng In conclusion","Gợi ý: In conclusion, cooking is a great way to spend my free time."]]),
+  L("Viết đoạn 60–80 từ: câu chủ đề, 2–3 lí do có từ nối, câu kết.","My favourite hobby is cycling. First, it keeps me fit. Also, I can explore my neighbourhood. Finally, I often cycle with my friends at weekends. In conclusion, cycling is fun and healthy.",[["Viết đoạn 60–80 từ về sở thích của em","Chấm theo: câu chủ đề, 2–3 lí do, từ nối, câu kết, dùng đúng like/enjoy + V-ing"],["Đọc đoạn của bạn và chỉ ra câu chủ đề","Câu đầu tiên nêu sở thích"]])]}
+ ]}
+};
+SUBJ.toan6={name:"Toán 6",book:"Kết nối tri thức",unit:"Chương",
+ chapters:["Chương I. Tập hợp các số tự nhiên","Chương II. Tính chia hết trong tập hợp các số tự nhiên","Chương III. Số nguyên","Chương IV. Một số hình phẳng trong thực tiễn","Chương V. Tính đối xứng của hình phẳng trong tự nhiên","Chương VI. Phân số","Chương VII. Số thập phân","Chương VIII. Những hình hình học cơ bản","Chương IX. Dữ liệu và xác suất thực nghiệm"],
+ dang:[
+ {name:"Tập hợp, cách viết tập hợp",lv:[
+  L("Viết tập hợp bằng cách liệt kê các phần tử trong dấu { }, dùng ∈ (thuộc) và ∉ (không thuộc).","A = {0; 1; 2; 3}: 2 ∈ A, 5 ∉ A",[["Viết tập hợp B các chữ cái trong từ HOA","B = {H; O; A}"],["Cho C = {1; 3; 5}. Điền ∈ hoặc ∉: 3 … C, 4 … C","3 ∈ C, 4 ∉ C"]]),
+  L("Chuyển giữa hai cách viết: liệt kê phần tử và chỉ ra tính chất đặc trưng.","{x ∈ ℕ | x < 4} = {0; 1; 2; 3}",[["Liệt kê: {x ∈ ℕ* | x ≤ 5}","{1; 2; 3; 4; 5}"],["Viết D = {0; 2; 4; 6; 8} bằng tính chất đặc trưng","D = {x ∈ ℕ | x chẵn, x < 10}"]]),
+  L("Số phần tử của dãy cách đều = (số cuối − số đầu) : khoảng cách + 1.","{10; 12; …; 50} có (50 − 10) : 2 + 1 = 21 phần tử",[["{1; 4; 7; …; 100} có bao nhiêu phần tử?","34"],["Có bao nhiêu số chẵn có hai chữ số?","45"]]),
+  L("Tổng dãy cách đều = (số đầu + số cuối) × số số hạng : 2.","1 + 2 + … + 100 = (1 + 100) × 100 : 2 = 5050",[["2 + 4 + … + 100","2550"],["1 + 3 + 5 + … + 99","2500"]])]},
+ {name:"Luỹ thừa với số mũ tự nhiên",lv:[
+  L("aⁿ là tích của n thừa số a.","2³ = 2 · 2 · 2 = 8",[["5²","25"],["10⁴","10 000"]]),
+  L("Nhân hai luỹ thừa cùng cơ số thì cộng số mũ; chia thì trừ số mũ (a ≠ 0, m ≥ n).","3² · 3⁴ = 3⁶",[["7⁵ : 7²","7³"],["2 · 2³ · 2⁴","2⁸"]]),
+  L("Tìm số mũ bằng cách viết hai vế về cùng cơ số.","2ˣ = 32 = 2⁵ ⇒ x = 5",[["3ˣ = 81","x = 4"],["2ˣ⁺¹ = 16","x = 3"]]),
+  L("So sánh luỹ thừa: đưa về cùng cơ số hoặc cùng số mũ.","2³⁰⁰ = 8¹⁰⁰ < 9¹⁰⁰ = 3²⁰⁰",[["So sánh 2⁶⁰ và 4²⁹","2⁶⁰ lớn hơn (4²⁹ = 2⁵⁸)"],["So sánh 5³⁰⁰ và 3⁵⁰⁰","3⁵⁰⁰ lớn hơn (125¹⁰⁰ < 243¹⁰⁰)"]])]},
+ {name:"Thứ tự thực hiện phép tính",lv:[
+  L("Không có ngoặc: luỹ thừa → nhân, chia → cộng, trừ.","5 + 3 · 2² = 5 + 12 = 17",[["20 − 4 · 3","8"],["2³ + 6 : 2","11"]]),
+  L("Có ngoặc: làm trong ( ) trước, rồi [ ], cuối cùng { }.","2 · [30 − (4 + 6)] = 2 · 20 = 40",[["100 − [5 · (8 − 3)]","75"],["36 : [2 · (5 − 2)]","6"]]),
+  L("Tìm x: tìm dần từ ngoài vào trong.","3x + 5 = 20 ⇒ 3x = 15 ⇒ x = 5",[["2x − 7 = 15","x = 11"],["(x − 3) · 4 = 28","x = 10"]]),
+  L("Tính nhanh bằng tính chất giao hoán, kết hợp, phân phối.","25 · 17 · 4 = (25 · 4) · 17 = 1700",[["37 · 56 + 37 · 44","3700"],["125 · 8 · 23","23 000"]])]}
+ ]};
+SUBJ.anh6={name:"Tiếng Anh 6",book:"Global Success",unit:"Unit",
+ chapters:["Unit 1. My new school","Unit 2. My house","Unit 3. My friends","Unit 4. My neighbourhood","Unit 5. Natural wonders of the world","Unit 6. Our Tet holiday","Unit 7. Television","Unit 8. Sports and games","Unit 9. Cities of the world","Unit 10. Our houses in the future","Unit 11. Our greener world","Unit 12. Robots"],
+ dang:[
+ {name:"Từ vựng: đồ dùng, môn học, play / do / have / study",lv:[
+  L("Nhận biết nghĩa của từ chỉ đồ dùng học tập.","calculator = máy tính cầm tay",[["compass","com-pa"],["pencil sharpener","gọt bút chì"]]),
+  L("Ghép play với môn thể thao có bóng, nhạc cụ; do với homework, exercise.","play football · do homework",[["___ the piano","play"],["___ exercise","do"]]),
+  L("Ghép have với lessons, school lunch; study với tên môn học.","have school lunch · study history",[["___ lessons","have"],["___ science","study"]]),
+  L("Tự viết câu về trường mới, dùng đúng cụm từ.","At my new school, I study English and play football at break time.",[["Viết 1 câu dùng have","Gợi ý: We have maths lessons on Monday."],["Viết 1 câu dùng do","Gợi ý: I do my homework after dinner."]])]},
+ {name:"Thì hiện tại đơn, trạng từ tần suất",lv:[
+  L("I, you, we, they + V; he, she, it + V-s/es.","She goes to school by bike.",[["He (play) football.","plays"],["They (study) maths.","study"]]),
+  L("Phủ định và câu hỏi dùng do / does + V nguyên mẫu.","Does she like music? – Yes, she does.",[["Viết phủ định: I like history.","I don't like history."],["Viết câu hỏi: He walks to school.","Does he walk to school?"]]),
+  L("Trạng từ tần suất đứng trước động từ thường, sau động từ be.","She usually has breakfast at six. · He is always on time.",[["Sắp xếp: I / often / do / my homework / after school","I often do my homework after school."],["Sắp xếp: Mai / late / never / is","Mai is never late."]]),
+  L("Tìm và sửa lỗi sai.","She don't like maths. → doesn't",[["My brother study English every day.","study → studies"],["Do your sister go to school by bus?","Do → Does"]])]},
+ {name:"Phát âm /ɑː/ và /ʌ/",lv:[
+  L("/ɑː/ là âm dài (car, art); /ʌ/ là âm ngắn (cup, sun).","art /ɑːt/ · cup /kʌp/",[["smart","/ɑː/"],["lunch","/ʌ/"]]),
+  L("Chọn từ có phần gạch chân phát âm khác.","art · class · father · Monday → Monday",[["come · brother · study · start","start (/ɑː/)"],["dark · large · smart · subject","subject (/ʌ/)"]]),
+  L("Phân loại từ theo âm.","farm /ɑː/ · love /ʌ/",[["glass · bus","glass /ɑː/ · bus /ʌ/"],["heart · month","heart /ɑː/ · month /ʌ/"]]),
+  L("Tìm các từ chứa âm /ɑː/ và /ʌ/ trong cả câu.","My brother has a large art class on Monday. → /ʌ/: brother, Monday · /ɑː/: large, art, class",[["Some students start lunch at half past one.","/ʌ/: some, lunch, one · /ɑː/: start, half, past"],["Come to the park with your mother.","/ʌ/: come, mother · /ɑː/: park"]])]}
+ ]};
+SUBJ.toan8.byCh={
+1:[
+ {name:"Khai triển và viết gọn biểu thức theo hằng đẳng thức",lv:[
+  L("Xác định hai số hạng A và B rồi áp dụng trực tiếp công thức bình phương hoặc lập phương của một tổng, một hiệu.","Khai triển (2x + 3)² = (2x)² + 2 · 2x · 3 + 3² = 4x² + 12x + 9",[["Khai triển (3x − 1)²","9x² − 6x + 1"],["Viết x² + 6x + 9 dưới dạng bình phương của một tổng","(x + 3)²"],["Khai triển (x + 2)³","x³ + 6x² + 12x + 8"]]),
+  L("Nhận diện vế của hằng đẳng thức hiệu hai bình phương, tổng/hiệu hai lập phương hoặc thu gọn bình phương thiếu.","(2x − 3y)(2x + 3y) = (2x)² − (3y)² = 4x² − 9y²",[["Tính tích (5x − 2y)(5x + 2y)","25x² − 4y²"],["Viết 8x³ − 27 dưới dạng tích","(2x − 3)(4x² + 6x + 9)"],["Thu gọn (x − 2)(x² + 2x + 4)","x³ − 8"]]),
+  L("Áp dụng linh hoạt nhiều hằng đẳng thức để rút gọn biểu thức phức tạp hoặc tính nhanh.","Tính nhanh 101² = (100 + 1)² = 10000 + 200 + 1 = 10201",[["Rút gọn A = (x + 3)² + (x − 3)² − 2(x + 3)(x − 3)","36"],["Tính nhanh 997 · 1003","999991"],["Rút gọn B = (2x + 1)³ − 8x³ − 1","12x² + 6x"]]),
+  L("Biến đổi biểu thức nhiều ngoặc phức tạp hoặc chứng minh tính chất chia hết, đẳng thức.","Chứng minh P = (x − 1)³ − x³ + 3x² − 3x không phụ thuộc vào x. Lời giải: P = x³ − 3x² + 3x − 1 − x³ + 3x² − 3x = −1",[["Rút gọn C = (x − 2)³ + (x + 2)³ − 6x(x − 2)(x + 2)","−4x³ + 48x"],["Chứng minh (n + 3)² − n² chia hết cho 3 với mọi số nguyên n","(n + 3)² − n² = 6n + 9 = 3(2n + 3) chia hết cho 3"]])]},
+ {name:"Phân tích đa thức thành nhân tử",lv:[
+  L("Tìm nhân tử chung về số và biến của tất cả các số hạng để đặt ra ngoài ngoặc.","6x²y − 9xy² = 3xy(2x − 3y)",[["4x² − 8xy","4x(x − 2y)"],["5x(x − 2) + 3(x − 2)","(x − 2)(5x + 3)"],["3x³ − 6x² + 3x","3x(x − 1)²"]]),
+  L("Sử dụng trực tiếp các hằng đẳng thức đáng nhớ để đưa đa thức về dạng tích.","9x² − 4y² = (3x − 2y)(3x + 2y)",[["16x² − 24xy + 9y²","(4x − 3y)²"],["(x + 1)² − 25","(x − 4)(x + 6)"],["27x³ + y³","(3x + y)(9x² − 3xy + y²)"]]),
+  L("Nhóm các số hạng thích hợp để xuất hiện nhân tử chung hoặc hằng đẳng thức rồi tiếp tục phân tích.","x² − y² + 3x − 3y = (x − y)(x + y) + 3(x − y) = (x − y)(x + y + 3)",[["x² − 4y² + 2x + 4y","(x + 2y)(x − 2y + 2)"],["x² − 2xy + y² − 9z²","(x − y − 3z)(x − y + 3z)"],["x³ − 3x² − 4x + 12","(x − 3)(x − 2)(x + 2)"]]),
+  L("Tách hạng tử bậc nhất hoặc thêm bớt số hạng để tạo dạng hằng đẳng thức hoặc nhân tử chung.","x² − 5x + 6 = x² − 2x − 3x + 6 = x(x − 2) − 3(x − 2) = (x − 2)(x − 3)",[["x² + 7x + 12","(x + 3)(x + 4)"],["x⁴ + 4","(x² − 2x + 2)(x² + 2x + 2)"]])]},
+ {name:"Tìm x và tính giá trị biểu thức",lv:[
+  L("Thay trực tiếp giá trị của biến vào biểu thức đơn giản để tính giá trị.","A = x² − 4 tại x = 102: A = (102 − 2)(102 + 2) = 100 · 104 = 10400",[["P = x² − 6x + 9 tại x = 103","10000"],["Tìm x biết x² − 9 = 0","x = 3 hoặc x = −3"],["Q = 8x³ − 12x² + 6x − 1 tại x = 5,5","1000"]]),
+  L("Biến đổi vế trái về dạng tích A · B = 0 để tìm x, hoặc thu gọn biểu thức trước khi thay số.","x(x − 3) + 2(x − 3) = 0 ⇒ (x − 3)(x + 2) = 0 ⇒ x = 3 hoặc x = −2",[["Tìm x biết (2x − 1)² − 16 = 0","x = 5/2 hoặc x = −3/2"],["M = x² − 2xy + y² tại x = 105, y = 5","10000"],["Tìm x biết x³ − 4x = 0","x = 0, x = 2 hoặc x = −2"]]),
+  L("Biến đổi biểu thức cần tính theo các cụm giả thiết đã cho (như x + y, x − y, xy).","A = x² + y² khi x + y = 5, xy = 4: A = (x + y)² − 2xy = 25 − 8 = 17",[["Cho x − y = 4 và xy = 5. Tính x³ − y³","124"],["Tìm x biết (x + 2)² − (x − 1)(x + 1) = 9","x = 1"],["Tính P = x³ + y³ biết x + y = 3 và xy = 2","9"]]),
+  L("Đưa biểu thức về dạng A² + k hoặc k − A² để tìm giá trị nhỏ nhất (GTNN) hoặc giá trị lớn nhất (GTLN).","A = x² − 6x + 11 = (x − 3)² + 2 ≥ 2. GTNN là 2 tại x = 3",[["Tìm GTNN của P = 4x² − 4x + 5","GTNN = 4 tại x = 1/2"],["Tìm GTLN của Q = 4x − x² − 1","GTLN = 3 tại x = 2"]])]}
+],
+2:[
+ {name:"Tính số đo góc trong tứ giác và các hình tứ giác đặc biệt",lv:[
+  L("Dùng định lí tổng 4 góc của tứ giác bằng 360°, hoặc hai góc kề một cạnh bên của hình thang bù nhau (tổng 180°).","Tứ giác ABCD có Â = 80°, B̂ = 100°, Ĉ = 70° ⇒ D̂ = 360° − (80° + 100° + 70°) = 110°",[["Tứ giác MNPQ có M̂ = 70°, N̂ = 110°, P̂ = 80°. Tính Q̂","Q̂ = 100°"],["Hình thang ABCD (AB // CD) có Â = 110°. Tính D̂","D̂ = 70°"],["Hình bình hành ABCD có Â = 70°. Tính B̂ và Ĉ","B̂ = 110°, Ĉ = 70°"]]),
+  L("Lập tỉ lệ hoặc hệ thức giữa các góc dựa trên tổng 4 góc của tứ giác hay tính chất góc kề đáy của hình thang cân.","Â : B̂ : Ĉ : D̂ = 1 : 2 : 3 : 4. Tổng 10 phần ⇒ Â = 360° : 10 · 1 = 36°",[["Hình thang cân ABCD (AB // CD) có Â = 2D̂. Tính các góc","Â = B̂ = 120°, Ĉ = D̂ = 60°"],["Tứ giác ABCD có Â − B̂ = 20°, Ĉ = 80°, D̂ = 100°. Tính Â và B̂","Â = 100°, B̂ = 80°"],["Hình thoi ABCD có Â = 60°. Tính các góc còn lại","B̂ = 120°, Ĉ = 60°, D̂ = 120°"]]),
+  L("Dùng tính chất tia phân giác kết hợp tổng các góc để tính góc tạo bởi hai tia phân giác.","Tia phân giác góc C và D cắt nhau tại I: góc CID = 180° − (Ĉ + D̂)/2 = (Â + B̂)/2",[["Tứ giác ABCD có Â = 100°, B̂ = 80°. Phân giác góc C và D cắt nhau tại I. Tính góc CID","90°"],["Hình bình hành ABCD có Â = 120°. Tia phân giác góc A cắt CD tại E. Tính các góc của tam giác ADE","Đều 60° (tam giác ADE đều)"],["Tứ giác ABCD có Â = 72°, D̂ = 68°. Phân giác góc B và C cắt nhau tại M. Tính góc BMC","70°"]]),
+  L("Vận dụng tổng các góc ngoài của tứ giác (bằng 360°) hoặc chứng minh mối quan hệ giữa các góc trong hình vẽ có tính chất đặc biệt.","Tứ giác ABCD có B̂ + D̂ = 180°, CB = CD. Trên tia đối của DA lấy E sao cho DE = AB. Chứng minh AC là phân giác góc BAD. Gợi ý: tam giác ABC = tam giác EDC (c.g.c) nên CA = CE và góc BAC = góc DEC = góc CAD",[["Tứ giác ABCD có Â = 90°, B̂ = 80°, Ĉ = 100°. Tính tổng 4 góc ngoài tại 4 đỉnh","360°"],["Tứ giác ABCD có AB = AD, CB = CD (hình cái diều), Â = 100°, Ĉ = 60°. Tính B̂ và D̂","B̂ = D̂ = 100°"]])]},
+ {name:"Chứng minh tứ giác là hình thang cân, hình bình hành, hình chữ nhật, hình thoi, hình vuông",lv:[
+  L("Áp dụng dấu hiệu nhận biết cơ bản: 2 cạnh đối song song (hình thang), 3 góc vuông (hình chữ nhật), 4 cạnh bằng nhau (hình thoi).","Tứ giác ABCD có Â = B̂ = Ĉ = 90° là hình chữ nhật (tứ giác có 3 góc vuông)",[["Tam giác ABC cân tại A. Trên AB, AC lấy M, N sao cho AM = AN. Chứng minh BMNC là hình thang cân","BMNC là hình thang có 2 góc kề đáy B và C bằng nhau"],["Tứ giác ABCD có AB // CD và AB = CD. Chứng minh ABCD là hình bình hành","Một cặp cạnh đối vừa song song vừa bằng nhau"],["Tứ giác ABCD có AB = BC = CD = DA. Chứng minh ABCD là hình thoi","Tứ giác có 4 cạnh bằng nhau"]]),
+  L("Dùng dấu hiệu nâng cao: hình bình hành có 1 góc vuông (hình chữ nhật), hình bình hành có 2 đường chéo vuông góc (hình thoi).","Hình bình hành ABCD có AC ⊥ BD nên là hình thoi",[["Tam giác ABC vuông tại A, M là trung điểm BC, D đối xứng với A qua M. Chứng minh ABDC là hình chữ nhật","Hai đường chéo AD và BC cắt nhau tại trung điểm M và AD = BC"],["Hình bình hành ABCD có AB = AD. Chứng minh ABCD là hình thoi","Hình bình hành có 2 cạnh kề bằng nhau"],["Hình thoi ABCD có Â = 90°. Chứng minh ABCD là hình vuông","Hình thoi có 1 góc vuông"]]),
+  L("Kết hợp trung điểm, trung tuyến ứng với cạnh huyền của tam giác vuông hoặc đường trung bình để chứng minh tứ giác đặc biệt.","Tam giác ABC vuông tại A, đường cao AH. D, E là hình chiếu của H trên AB, AC ⇒ ADHE là hình chữ nhật",[["Tam giác ABC cân tại A, đường cao AH. K là trung điểm AC, E đối xứng với H qua K. Chứng minh AHCE là hình chữ nhật","Hai đường chéo AC và HE cắt nhau tại trung điểm K và góc AHC = 90°"],["Chứng minh trung điểm bốn cạnh của một hình chữ nhật là các đỉnh của một hình thoi","Tứ giác có 4 cạnh bằng nhau (bằng nửa đường chéo hình chữ nhật)"],["Hình vuông ABCD, lấy M, N, P, Q trên AB, BC, CD, DA sao cho AM = BN = CP = DQ. Chứng minh MNPQ là hình vuông","4 cạnh bằng nhau và 4 góc vuông (do các tam giác vuông bằng nhau)"]]),
+  L("Tìm điều kiện của tam giác ban đầu (cân, vuông, vuông cân) để tứ giác tạo thành là hình chữ nhật, hình thoi hoặc hình vuông.","Tìm điều kiện của tam giác ABC để hình bình hành AMCN (M là trung điểm BC) là hình chữ nhật. Đáp án: tam giác ABC cân tại A",[["Tam giác ABC vuông tại A, M là trung điểm BC, D đối xứng với M qua AB. Tìm điều kiện để ADBM là hình vuông","Tam giác ABC vuông cân tại A"],["M là trung điểm BC, D đối xứng với A qua M. Tam giác ABC cần điều kiện gì để ABDC là hình thoi?","Cân tại A (AB = AC)"]])]},
+ {name:"Tính độ dài cạnh, đường chéo, chu vi và diện tích tứ giác",lv:[
+  L("Dùng tính chất cạnh đối bằng nhau của hình bình hành, hình chữ nhật hoặc đường chéo cắt nhau tại trung điểm.","Hình chữ nhật ABCD có AB = 6 cm, BC = 8 cm ⇒ AC = √(6² + 8²) = 10 cm",[["Hình bình hành ABCD có AB = 5 cm, BC = 7 cm. Tính chu vi","24 cm"],["Hình chữ nhật ABCD, hai đường chéo cắt nhau tại O, AC = 12 cm. Tính OA","6 cm"],["Hình thoi cạnh 5 cm. Tính chu vi","20 cm"]]),
+  L("Dùng định lí Pythagore trong tam giác vuông tạo bởi đường cao hoặc hai đường chéo vuông góc của hình thoi.","Hình thoi có AC = 6 cm, BD = 8 cm ⇒ cạnh = √(3² + 4²) = 5 cm",[["Hình thang cân ABCD (AB // CD), AB = 4 cm, CD = 10 cm, AD = 5 cm. Tính đường cao AH","4 cm"],["Hình thoi có chu vi 40 cm và một đường chéo 12 cm. Tính đường chéo còn lại","16 cm"],["Hình vuông cạnh 4 cm. Tính đường chéo","4√2 cm ≈ 5,66 cm"]]),
+  L("Vận dụng tính chất trung tuyến tam giác vuông (bằng nửa cạnh huyền) và các tỉ số hình học để tính độ dài.","Tam giác ABC vuông tại A, BC = 10 cm ⇒ trung tuyến AM = 5 cm",[["Tam giác ABC vuông tại A, trung tuyến AM = 6,5 cm, AB = 5 cm. Tính AC","12 cm"],["Hình chữ nhật ABCD, O là giao điểm hai đường chéo, góc AOB = 60°, AC = 10 cm. Tính AB, BC","AB = 5 cm, BC = 5√3 cm ≈ 8,66 cm"]]),
+  L("Kết hợp định lí Pythagore và tam giác vuông cân để tính kích thước hoặc giải bài toán cực trị hình học đơn giản.","Tam giác ABC vuông cân tại A, M ∈ BC, N và P là hình chiếu của M trên AB, AC. NP ngắn nhất khi M là trung điểm BC",[["Hình chữ nhật ABCD có chu vi 36 cm, M là trung điểm BC, MA ⊥ MD. Tính các cạnh","AB = 6 cm, BC = 12 cm"],["Hình thoi có chu vi 20 cm, tổng hai đường chéo 14 cm. Tính diện tích","24 cm²"]])]}
+],
+3:[
+ {name:"Tính độ dài và tỉ số đoạn thẳng bằng định lí Thalès",lv:[
+  L("Viết đúng tỉ lệ thức Thalès AM/AB = AN/AC hoặc AM/MB = AN/NC khi có đường thẳng song song với một cạnh, rồi nhân chéo.","MN // BC, AM = 3, MB = 2, AN = 4,5 ⇒ 3/2 = 4,5/NC ⇒ NC = 3",[["DE // BC, AD = 2 cm, DB = 4 cm, AE = 3 cm. Tính EC","6 cm"],["Tỉ số của AB = 15 cm và CD = 35 cm","3/7"],["DE // BC, AD/AB = 2/5, AC = 15 cm. Tính AE","6 cm"]]),
+  L("Biến đổi tổng/hiệu đoạn thẳng để lập tỉ lệ thức thích hợp khi đề cho cả cạnh, hoặc bài đo khoảng cách thực tế.","DE // BC, AD = 4, AB = 6, AC = 9 ⇒ AE/AC = 4/6 = 2/3 ⇒ AE = 6",[["DE // BC, AD = 3 cm, AB = 8 cm, EC = 10 cm. Tính AE","6 cm"],["Đo khoảng cách BE qua sông: AF = 40 m, FC = 20 m, EC = 30 m, EF // AB. Tính BE","60 m"],["MN // BC, AM = x, MB = 3, AN = 4, NC = 6. Tìm x","x = 2"]]),
+  L("Dùng đường phụ song song hoặc tỉ số trung gian để tính đoạn thẳng không nằm trực tiếp trên hai cạnh cắt nhau.","DE // BC, EF // AB (F ∈ BC) ⇒ BF = DE; AD = 2, AB = 5, BC = 10 ⇒ DE = BF = 10 · 2/5 = 4",[["Hình thang ABCD (AB // CD), đường song song hai đáy cắt AD tại M, AC tại I, BC tại N. AM/AD = 1/3, CD = 12 cm. Tính MI","4 cm"],["Tam giác ABC có trọng tâm G. Đường thẳng qua G song song AB cắt BC tại M. Tính BM/BC","1/3"]]),
+  L("Áp dụng Thalès trong hình thang hoặc kết hợp nhiều tam giác để chứng minh đẳng thức tỉ số.","Hình thang ABCD (AB // CD), đường song song hai đáy cắt AD, AC, BC tại M, I, N. Chứng minh AM/AD + CN/CB = 1",[["Điểm O trong tam giác ABC. Lấy D trên OA, kẻ DE // AB (E ∈ OB), DF // AC (F ∈ OC). Chứng minh EF // BC","OE/OB = OD/OA = OF/OC nên EF // BC (Thalès đảo)"],["Hình thang ABCD (AB // CD), hai đường chéo cắt nhau tại O. Qua O kẻ đường song song hai đáy cắt AD tại E, BC tại F. Chứng minh OE = OF","OE/CD = AO/AC = BO/BD = OF/CD nên OE = OF"]])]},
+ {name:"Đường trung bình của tam giác",lv:[
+  L("Nhận biết đường trung bình (nối trung điểm 2 cạnh): song song với cạnh thứ ba và bằng nửa cạnh đó.","M, N là trung điểm AB, AC, BC = 12 cm ⇒ MN = 6 cm",[["Tam giác DEF, H, K là trung điểm DE, DF, HK = 8 cm. Tính EF","16 cm"],["Tam giác ABC có chu vi 24 cm. Tính chu vi tam giác tạo bởi 3 đường trung bình","12 cm"],["M, N là trung điểm AB, AC, góc ABC = 65°. Tính góc AMN","65°"]]),
+  L("Đường thẳng đi qua trung điểm một cạnh và song song với cạnh thứ hai thì đi qua trung điểm cạnh thứ ba.","M là trung điểm AB, đường thẳng qua M song song BC cắt AC tại N ⇒ N là trung điểm AC",[["Tam giác ABC có trung tuyến AM. Lấy D, E trên AB sao cho AD = DE = EB. DC cắt AM tại I. Chứng minh I là trung điểm AM","Trong tam giác BCD, EM // DC (đường trung bình); trong tam giác AEM, DI // EM nên I là trung điểm AM"],["Tam giác ABC vuông tại A, H, I, K là trung điểm AB, BC, AC. Chứng minh AHIK là hình chữ nhật","AHIK là hình bình hành có Â = 90°"]]),
+  L("Kết hợp đường trung bình trong nhiều tam giác để chứng minh tứ giác là hình bình hành, hình thoi, hình chữ nhật.","E, F, G, H là trung điểm AB, BC, CD, DA ⇒ EFGH là hình bình hành (EF // AC // HG và EF = HG = AC/2)",[["Hình chữ nhật ABCD, E, F, G, H là trung điểm các cạnh. Chứng minh EFGH là hình thoi","4 cạnh bằng nhau và bằng AC/2"],["Tứ giác ABCD có AC ⊥ BD, E, F, G, H là trung điểm các cạnh. Chứng minh EFGH là hình chữ nhật","Hình bình hành có 2 cạnh kề vuông góc"]]),
+  L("Dùng đường trung bình cho bài chứng minh thẳng hàng, đồng quy hoặc bài nâng cao.","Trung tuyến BD, CE cắt nhau tại G; I, K là trung điểm GB, GC ⇒ EDKI là hình bình hành",[["Hình thang ABCD (AB // CD), Â = D̂ = 90°, CD = 2AB. H là hình chiếu của D trên AC; M, N là trung điểm HC, HD. Chứng minh góc BMD = 90°","N là trực tâm tam giác ADM nên AN ⊥ DM; ABMN là hình bình hành nên BM // AN"],["Lấy D trên AB, E trên AC sao cho BD = CE. M, N, I, K là trung điểm BE, CD, DE, BC. Chứng minh MN ⊥ IK","MINK là hình thoi nên hai đường chéo vuông góc"]])]},
+ {name:"Tính chất đường phân giác của tam giác",lv:[
+  L("Áp dụng DB/DC = AB/AC (đoạn kề cạnh nào tỉ lệ với cạnh đó) để lập tỉ lệ thức.","AD là phân giác, AB = 4 cm, AC = 6 cm, DB = 3 cm ⇒ DC = 6 · 3 : 4 = 4,5 cm",[["AB = 6 cm, AC = 9 cm, DC = 6 cm. Tính DB","4 cm"],["Tam giác MPQ, MN là phân giác góc M, MP = 4 cm, MQ = 6 cm, NP = 3 cm. Tính NQ","4,5 cm"],["AB = 5 cm, AC = 7 cm. Tính DB/DC","5/7"]]),
+  L("Tính hai đoạn trên cạnh đáy khi biết cả cạnh BC và hai cạnh AB, AC.","AB = 6, AC = 8, BC = 7 ⇒ DB/DC = 3/4 ⇒ DB = 3 cm, DC = 4 cm",[["AB = 12 cm, AC = 15 cm, BC = 18 cm. Tính DB, DC","DB = 8 cm, DC = 10 cm"],["Tam giác ABC vuông tại A, AB = 6, AC = 8, BC = 10. Phân giác BD cắt AC tại D. Tính AD, DC","AD = 3 cm, DC = 5 cm"],["AB = 5 cm, AC = 7 cm, BC = 6,5 cm. Tính DC (làm tròn 1 chữ số thập phân)","DC ≈ 3,8 cm"]]),
+  L("Dùng tính chất phân giác kết hợp Thalès đảo để chứng minh hai đường thẳng song song.","Trung tuyến AM, phân giác góc AMB cắt AB tại D, phân giác góc AMC cắt AC tại E: DA/DB = MA/MB = MA/MC = EA/EC ⇒ DE // BC",[["Tam giác ABC cân tại A, phân giác BD và CE. Chứng minh DE // BC","DA/DC = EA/EB vì AB = AC và tính chất phân giác"],["Trung tuyến AI, phân giác góc AIB cắt AB tại M, phân giác góc AIC cắt AC tại N. Chứng minh MN // BC","MA/MB = IA/IB = IA/IC = NA/NC"]]),
+  L("Chứng minh đẳng thức hình học nâng cao hoặc tính tỉ số diện tích liên quan đến đường phân giác.","Chứng minh S(ABD)/S(ACD) = AB/AC: hai tam giác có cùng chiều cao từ A nên tỉ số diện tích bằng DB/DC = AB/AC",[["AD là phân giác, kẻ DE // AB (E ∈ AC). Chứng minh 1/DE = 1/AB + 1/AC","DE = AB · AC/(AB + AC)"],["Tam giác ABC vuông tại A, phân giác AD, AB = c, AC = b. Tính AD theo b, c","AD = bc√2/(b + c)"]])]}
+]};
+SUBJ.toan8.byCh[1]=[
+ {name:"Bình phương của một tổng, một hiệu",lv:[
+  L("Nhớ (A + B)² = A² + 2AB + B² và (A − B)² = A² − 2AB + B². Gọi tên A, B rồi thay vào.","(x + 5)² = x² + 10x + 25",[["Biểu thức x² − 2x + 1 có dạng hằng đẳng thức nào?","Bình phương của một hiệu: (x − 1)²"],["Khai triển (x + 3)²","x² + 6x + 9"],["Khai triển (y − 4)²","y² − 8y + 16"]]),
+  L("Khi A, B có hệ số thì bình phương cả hệ số; đọc ngược công thức để viết đa thức thành bình phương.","(2x + 3)² = (2x)² + 2 · 2x · 3 + 3² = 4x² + 12x + 9",[["Khai triển (3x − 1)²","9x² − 6x + 1"],["Viết x² + 6x + 9 dưới dạng bình phương của một tổng","(x + 3)²"],["Viết 4x² − 4xy + y² dưới dạng bình phương","(2x − y)²"]]),
+  L("Dùng bình phương tổng/hiệu để tính nhanh và rút gọn biểu thức nhiều hạng tử.","101² = (100 + 1)² = 10000 + 200 + 1 = 10201",[["Tính nhanh 99²","9801"],["Tính 49² + 2 · 49 · 51 + 51²","(49 + 51)² = 10000"],["Rút gọn A = (x + 3)² + (x − 3)² − 2(x + 3)(x − 3)","36"]]),
+  L("Chứng minh đẳng thức hoặc tính chia hết bằng cách khai triển rồi thu gọn.","(a + b)² − (a − b)² = 4ab",[["Chứng minh (n + 3)² − n² chia hết cho 3 với mọi số nguyên n","(n + 3)² − n² = 6n + 9 = 3(2n + 3)"],["Chứng minh x² + y² = (x + y)² − 2xy, rồi tính x² + y² biết x + y = 5, xy = 4","17"]])]},
+ {name:"Hiệu hai bình phương",lv:[
+  L("A² − B² = (A − B)(A + B): hiệu hai bình phương bằng tích của hiệu và tổng.","(x − 3)(x + 3) = x² − 9",[["Tính (x − 5)(x + 5)","x² − 25"],["Biểu thức x² − 16 có dạng hằng đẳng thức nào? Viết thành tích","Hiệu hai bình phương: (x − 4)(x + 4)"]]),
+  L("Xác định A, B khi có hệ số hoặc hai biến, dùng hai chiều của công thức.","(2x − 3y)(2x + 3y) = (2x)² − (3y)² = 4x² − 9y²",[["Tính (5x − 2y)(5x + 2y)","25x² − 4y²"],["Viết 9x² − 4y² thành tích","(3x − 2y)(3x + 2y)"]]),
+  L("Tính nhanh tích hai số đối xứng quanh một số tròn, hoặc hiệu hai bình phương của số lớn.","52 · 48 = (50 + 2)(50 − 2) = 2500 − 4 = 2496",[["Tính nhanh 997 · 1003","999991"],["Tính nhanh 75² − 25²","5000"]]),
+  L("Dùng hiệu hai bình phương với A, B là cả một biểu thức để rút gọn hoặc chứng minh.","(x + 1)² − 25 = (x + 1 − 5)(x + 1 + 5) = (x − 4)(x + 6)",[["Chứng minh (2n + 1)² − 1 chia hết cho 8 với mọi số nguyên n","= 2n(2n + 2) = 4n(n + 1), mà n(n + 1) chia hết cho 2"],["Tính (x + y)² − (x − y)² tại x = 2,5; y = 4","4xy = 40"]])]},
+ {name:"Lập phương của một tổng, một hiệu",lv:[
+  L("(A + B)³ = A³ + 3A²B + 3AB² + B³; (A − B)³ = A³ − 3A²B + 3AB² − B³. Hệ số 1, 3, 3, 1.","(x + 2)³ = x³ + 6x² + 12x + 8",[["Khai triển (x + 1)³","x³ + 3x² + 3x + 1"],["Khai triển (x − 1)³","x³ − 3x² + 3x − 1"]]),
+  L("A, B có hệ số thì lập phương cả hệ số; đọc ngược để viết đa thức thành lập phương.","(2x − 1)³ = 8x³ − 12x² + 6x − 1",[["Khai triển (x + 2y)³","x³ + 6x²y + 12xy² + 8y³"],["Viết x³ + 9x² + 27x + 27 dưới dạng lập phương","(x + 3)³"]]),
+  L("Rút gọn và tính giá trị bằng cách nhận ra khuôn lập phương.","B = (2x + 1)³ − 8x³ − 1 = 12x² + 6x",[["Tính Q = 8x³ − 12x² + 6x − 1 tại x = 5,5","(2x − 1)³ = 10³ = 1000"],["Rút gọn (x + 1)³ − (x − 1)³","6x² + 2"]]),
+  L("Chứng minh biểu thức không phụ thuộc biến hoặc chia hết.","P = (x − 1)³ − x³ + 3x² − 3x = x³ − 3x² + 3x − 1 − x³ + 3x² − 3x = −1",[["Rút gọn C = (x − 2)³ + (x + 2)³ − 6x(x − 2)(x + 2)","−4x³ + 48x"],["Chứng minh (n + 1)³ − n³ − 1 chia hết cho 3","= 3n² + 3n = 3n(n + 1)"]])]},
+ {name:"Tổng và hiệu hai lập phương",lv:[
+  L("A³ + B³ = (A + B)(A² − AB + B²); A³ − B³ = (A − B)(A² + AB + B²). Ngoặc sau không có số 2.","x³ + 8 = x³ + 2³ = (x + 2)(x² − 2x + 4)",[["Viết x³ − 1 thành tích","(x − 1)(x² + x + 1)"],["Ngoặc sau trong A³ + B³ có số 2 ở hạng tử giữa không?","Không: A² − AB + B²"]]),
+  L("Nhận ra số lập phương (8 = 2³, 27 = 3³, 8x³ = (2x)³) và dùng hai chiều của công thức.","8x³ − 27 = (2x − 3)(4x² + 6x + 9)",[["Thu gọn (x − 2)(x² + 2x + 4)","x³ − 8"],["Viết 27x³ + y³ thành tích","(3x + y)(9x² − 3xy + y²)"]]),
+  L("Rút gọn biểu thức có tổng/hiệu hai lập phương, tính nhanh.","(x + 3)(x² − 3x + 9) − x³ = x³ + 27 − x³ = 27",[["Rút gọn (x − 1)(x² + x + 1) − (x + 1)(x² − x + 1)","−2"],["Tính nhanh 11³ − 1 bằng hiệu hai lập phương","(11 − 1)(121 + 11 + 1) = 1330"]]),
+  L("Biểu diễn x³ ± y³ qua x ± y và xy.","x − y = 4, xy = 5 ⇒ x³ − y³ = (x − y)³ + 3xy(x − y) = 64 + 60 = 124",[["Tính x³ + y³ biết x + y = 3 và xy = 2","9"],["Chứng minh a³ + b³ = (a + b)³ − 3ab(a + b)","Khai triển vế phải: a³ + 3a²b + 3ab² + b³ − 3a²b − 3ab² = a³ + b³"]])]},
+ {name:"Rút gọn, tính giá trị, chứng minh (tổng hợp 7 hằng đẳng thức)",lv:[
+  L("Nhìn từng cụm xem là hằng đẳng thức nào, viết gọn trước khi thay số.","A = x² − 4 tại x = 102: A = (102 − 2)(102 + 2) = 100 · 104 = 10400",[["P = x² − 6x + 9 tại x = 103","10000"],["M = x² − 2xy + y² tại x = 105, y = 5","10000"]]),
+  L("Rút gọn biểu thức bằng hằng đẳng thức rồi mới thay số.","A = (x + 2)² − (x − 2)² = 8x; tại x = 5 thì A = 40",[["Rút gọn (x + 3)² − x(x + 6)","9"],["Rút gọn (x − 1)(x + 1) − (x − 2)² rồi tính tại x = 3","4x − 5 = 7"]]),
+  L("Chứng minh đẳng thức: biến đổi vế phức tạp thành vế còn lại; tính theo x + y, xy.","x + y = 5, xy = 4 ⇒ x² + y² = (x + y)² − 2xy = 17",[["Chứng minh (a + b)(a² − ab + b²) + (a − b)(a² + ab + b²) = 2a³","a³ + b³ + a³ − b³ = 2a³"],["Cho x − y = 3, xy = 10. Tính x² + y²","29"]]),
+  L("Chứng minh không phụ thuộc biến hoặc chia hết trong trường hợp nhiều bước.","(x + 1)³ − (x − 1)³ − 6x² = 2",[["Chứng minh n³ − n chia hết cho 6 với mọi số nguyên n","n³ − n = (n − 1)n(n + 1) là tích 3 số nguyên liên tiếp"],["Chứng minh (2x + 1)² + (2x − 1)² − 2(2x + 1)(2x − 1) không phụ thuộc vào x","= [(2x + 1) − (2x − 1)]² = 4"]])]},
+ {name:"Tìm giá trị lớn nhất, nhỏ nhất",lv:[
+  L("A² ≥ 0 với mọi A, dấu bằng khi A = 0. Nên A² + k ≥ k và k − A² ≤ k.","(x − 1)² + 3 ≥ 3; GTNN là 3 khi x = 1",[["Tìm GTNN của (x + 2)² + 5","5, khi x = −2"],["Tìm GTLN của 7 − (x − 3)²","7, khi x = 3"]]),
+  L("Thêm bớt để đưa x² + bx + c về (x + b/2)² + số.","x² − 6x + 11 = (x − 3)² + 2 ≥ 2; GTNN là 2 khi x = 3",[["Tìm GTNN của x² + 4x + 9","5, khi x = −2"],["Tìm GTNN của x² − 2x","−1, khi x = 1"]]),
+  L("Hệ số của x² khác 1, hoặc hệ số âm (tìm GTLN).","9x² − 6x + 2 = (3x − 1)² + 1 ≥ 1; GTNN là 1 khi x = 1/3",[["Tìm GTNN của P = 4x² − 4x + 5","4, khi x = 1/2"],["Tìm GTLN của Q = 4x − x² − 1","3, khi x = 2"]]),
+  L("Hai biến: tách thành tổng hai bình phương cộng một số.","x² + y² − 2x + 4y + 7 = (x − 1)² + (y + 2)² + 2 ≥ 2",[["Tìm GTNN của x² + y² + 2x − 6y + 12","2, khi x = −1, y = 3"],["Chứng minh x² − x + 1 > 0 với mọi x","x² − x + 1 = (x − 1/2)² + 3/4 > 0"]])]},
+ {name:"Phân tích thành nhân tử: đặt nhân tử chung, dùng hằng đẳng thức",lv:[
+  L("Tìm nhân tử chung: ƯCLN của các hệ số và biến chung với số mũ nhỏ nhất. Nhận ra đa thức có khuôn hằng đẳng thức.","6x²y − 9xy² = 3xy(2x − 3y)",[["Tìm nhân tử chung của 12x³ và 18x²","6x²"],["Phân tích 4x² − 8xy","4x(x − 2y)"],["x² − 25 nên phân tích bằng cách nào?","Hằng đẳng thức hiệu hai bình phương: (x − 5)(x + 5)"]]),
+  L("Dùng một phương pháp phù hợp; nhân tử chung có thể là cả một ngoặc.","9x² − 4y² = (3x − 2y)(3x + 2y)",[["5x(x − 2) + 3(x − 2)","(x − 2)(5x + 3)"],["16x² − 24xy + 9y²","(4x − 3y)²"],["(x + 1)² − 25","(x − 4)(x + 6)"]]),
+  L("Đặt nhân tử chung trước, rồi dùng hằng đẳng thức cho phần còn lại; bài toán diện tích.","3x³ − 6x² + 3x = 3x(x² − 2x + 1) = 3x(x − 1)²",[["2x³ − 8x","2x(x − 2)(x + 2)"],["Một tấm bìa hình vuông cạnh x (cm) bị cắt đi hình vuông nhỏ cạnh 3 cm ở góc. Viết diện tích còn lại dưới dạng tích","x² − 9 = (x − 3)(x + 3) (cm²)"]]),
+  L("Phân tích triệt để đa thức nhiều biến, dùng hằng đẳng thức nhiều lần.","x⁴ − 16 = (x² − 4)(x² + 4) = (x − 2)(x + 2)(x² + 4)",[["x³y − xy³","xy(x − y)(x + y)"],["(x² + 4)² − 16x²","(x − 2)²(x + 2)²"]])]},
+ {name:"Phân tích thành nhân tử: nhóm hạng tử, phối hợp, tách hạng tử",lv:[
+  L("Khi cả đa thức không có nhân tử chung, ghép thành nhóm để mỗi nhóm có nhân tử chung.","xy + y + x + 1 = y(x + 1) + (x + 1) = (x + 1)(y + 1)",[["ax + ay + bx + by","(a + b)(x + y)"],["x² + xy + x + y","(x + y)(x + 1)"]]),
+  L("Nhóm sao cho sau khi đặt nhân tử chung trong từng nhóm thì xuất hiện ngoặc giống nhau.","x² − y² + 3x − 3y = (x − y)(x + y) + 3(x − y) = (x − y)(x + y + 3)",[["x² − 4y² + 2x + 4y","(x + 2y)(x − 2y + 2)"],["x³ − 3x² − 4x + 12","(x − 3)(x − 2)(x + 2)"]]),
+  L("Nhóm thành hằng đẳng thức, rồi dùng hiệu hai bình phương.","x² − 2x + 1 − y² = (x − 1)² − y² = (x − 1 − y)(x − 1 + y)",[["x² − 2xy + y² − 9z²","(x − y − 3z)(x − y + 3z)"],["x² + 6x + 9 − y²","(x + 3 − y)(x + 3 + y)"]]),
+  L("Tách hạng tử bậc nhất hoặc thêm bớt để tạo nhân tử chung hoặc hằng đẳng thức.","x² − 5x + 6 = x² − 2x − 3x + 6 = x(x − 2) − 3(x − 2) = (x − 2)(x − 3)",[["x² + 7x + 12","(x + 3)(x + 4)"],["x² − x − 6","(x − 3)(x + 2)"],["x⁴ + 4","(x² − 2x + 2)(x² + 2x + 2)"]])]},
+ {name:"Tìm x và bài toán tổng hợp",lv:[
+  L("Tích bằng 0 khi có ít nhất một thừa số bằng 0.","(x − 2)(x + 5) = 0 ⇒ x = 2 hoặc x = −5",[["x(x − 4) = 0","x = 0 hoặc x = 4"],["x² − 9 = 0","x = 3 hoặc x = −3"]]),
+  L("Phân tích vế trái thành nhân tử rồi dùng quy tắc tích bằng 0. Không chia hai vế cho x.","x(x − 3) + 2(x − 3) = 0 ⇒ (x − 3)(x + 2) = 0 ⇒ x = 3 hoặc x = −2",[["x³ − 4x = 0","x = 0, x = 2 hoặc x = −2"],["x² − 6x + 9 = 0","x = 3"]]),
+  L("Biến đổi nhiều bước bằng hằng đẳng thức trước khi đưa về tích hoặc bậc nhất.","(2x − 1)² − 16 = 0 ⇒ (2x − 5)(2x + 3) = 0 ⇒ x = 5/2 hoặc x = −3/2",[["(x + 2)² − (x − 1)(x + 1) = 9","x = 1"],["x³ − 3x² − 4x + 12 = 0","x = 3, x = 2 hoặc x = −2"]]),
+  L("Phối hợp tách hạng tử, nhóm và hằng đẳng thức để tìm nghiệm.","x² − 5x + 6 = 0 ⇒ (x − 2)(x − 3) = 0 ⇒ x = 2 hoặc x = 3",[["(x + 1)³ − (x − 1)³ = 26","6x² + 2 = 26 ⇒ x = 2 hoặc x = −2"],["x³ − x² − x + 1 = 0","(x − 1)²(x + 1) = 0 ⇒ x = 1 hoặc x = −1"]])]}
+];
+SUBJ.toan8.plan={1:{note:"Tỷ trọng bài tập tham khảo: Nhận biết 25% · Thông hiểu 35% · Vận dụng 30% · Vận dụng cao 10%. Phân tích đa thức thành nhân tử nên được luyện xuyên suốt.",rows:[
+ [1,"Bình phương của một tổng, một hiệu; hiệu hai bình phương","Nhận biết – Thông hiểu – Vận dụng",[0,1],"Trên lớp: Nhận biết, Thông hiểu. Về nhà: Vận dụng. Vận dụng cao cho học sinh khá."],
+ [2,"Lập phương của một tổng, một hiệu; tổng và hiệu hai lập phương","Nhận biết – Thông hiểu – Vận dụng",[2,3],"Trên lớp: Nhận biết, Thông hiểu. Về nhà: Vận dụng. Vận dụng cao cho học sinh khá."],
+ [3,"Tổng hợp 7 hằng đẳng thức: rút gọn, tính giá trị, chứng minh, GTLN – GTNN","Thông hiểu – Vận dụng – Vận dụng cao",[4,5],"Mở đầu bằng 5 phút kiểm tra nhanh 7 công thức. GTLN – GTNN chỉ làm Nhận biết, Thông hiểu nếu học sinh còn yếu."],
+ [4,"Phân tích đa thức bằng nhân tử chung và hằng đẳng thức","Nhận biết – Thông hiểu",[6],""],
+ [5,"Nhóm hạng tử, phối hợp phương pháp, tách hạng tử","Thông hiểu – Vận dụng cao",[7],""],
+ [6,"Tìm x và bài toán tổng hợp","Vận dụng – Vận dụng cao",[8],""],
+ [7,"Ôn tập và kiểm tra cuối chương","Tổng hợp 4 mức độ",[],""]]}};
+function planBlock(ci){const p=(P().plan||{})[ci];if(!p)return"";const s=S();
+ return `<details class="dg" open><summary><span>Lộ trình ${p.rows.length} buổi</span><span class="eyebrow">gợi ý</span></summary>${p.mistakes?`<div class="panel" style="border-color:var(--bad);background:var(--bad-soft);margin:8px 0"><strong style="color:var(--bad)">Lỗi hay gặp</strong>${p.mistakes.map(m=>`<div><s>${esc(m[0])}</s><br>→ ${esc(m[1])}</div>`).join("")}</div>`:""}
+ <div class="tbl"><table><thead><tr><th>Đã dạy</th><th>Buổi</th><th>Nội dung trọng tâm</th><th>Mức độ</th></tr></thead><tbody>
+ ${p.rows.map(r=>{const items=r[3].map(x=>typeof x==="number"?[ci+"-"+x,"0123"]:[ci+"-"+x.split(":")[0],x.split(":")[1]]);const keys=items.map(it=>it[0]+":"+it[1]);const pk=ci+"-b"+r[0];const done=items.length?items.every(([k,ls])=>{const a=getLv(s,k);return ls.split("").every(l=>a[+l])}):!!(s.planDone||{})[pk];return `<tr><td><input type="checkbox" aria-label="Đã dạy buổi ${r[0]}" data-plan="${pk}|${keys.join(",")}" ${done?"checked":""}></td><td class="num">${r[0]}</td><td>${esc(r[1])}${r[4]?`<br><span class="hint">${esc(r[4])}</span>`:""}</td><td>${esc(r[2])}</td></tr>`}).join("")}</tbody></table></div>
+ <p class="hint">${esc(p.note)}</p></details>`}
+SUBJ.toan8.byCh[2]=[
+ {name:"Tứ giác, hình thang: tổng các góc",lv:[
+  L("Tổng 4 góc của tứ giác bằng 360°. Trong hình thang, hai góc kề một cạnh bên bù nhau (tổng 180°).","Â = 80°, B̂ = 100°, Ĉ = 70° ⇒ D̂ = 360° − 250° = 110°",[["Tổng các góc trong một tứ giác bằng bao nhiêu?","360°"],["Tứ giác MNPQ có M̂ = 70°, N̂ = 110°, P̂ = 80°. Tính Q̂","Q̂ = 100°"],["Hình thang ABCD (AB // CD) có Â = 110°. Tính D̂","D̂ = 70°"]]),
+  L("Góc cho theo tỉ lệ hoặc theo hiệu: đặt ẩn rồi dùng tổng 360° (hoặc 180° với hai góc kề cạnh bên).","Â : B̂ : Ĉ : D̂ = 1 : 2 : 3 : 4 ⇒ 10 phần = 360° ⇒ 36°, 72°, 108°, 144°",[["Â − B̂ = 20°, Ĉ = 80°, D̂ = 100°. Tính Â, B̂","Â = 100°, B̂ = 80°"],["Hình thang ABCD (AB // CD) có Â − D̂ = 40°. Tính Â, D̂","Â = 110°, D̂ = 70°"]]),
+  L("Kết hợp tia phân giác với tổng góc tam giác và tứ giác.","Phân giác góc C và D cắt nhau tại I: góc CID = 180° − (Ĉ + D̂)/2 = (Â + B̂)/2",[["Â = 100°, B̂ = 80°. Phân giác góc C và D cắt nhau tại I. Tính góc CID","90°"],["Â = 72°, D̂ = 68°. Phân giác góc B và C cắt nhau tại M. Tính góc BMC","70°"]]),
+  L("Góc ngoài của tứ giác, tứ giác có cặp cạnh bằng nhau, chứng minh quan hệ góc.","Tứ giác ABCD có B̂ + D̂ = 180°, CB = CD. Trên tia đối của DA lấy E sao cho DE = AB. Chứng minh AC là phân giác góc BAD. Gợi ý: tam giác ABC = tam giác EDC (c.g.c) nên CA = CE và góc BAC = góc DEC = góc CAD",[["Â = 90°, B̂ = 80°, Ĉ = 100°. Tính tổng 4 góc ngoài tại 4 đỉnh","360°"],["Tứ giác ABCD có AB = AD, CB = CD, Â = 100°, Ĉ = 60°. Tính B̂, D̂","B̂ = D̂ = 100°"]])]},
+ {name:"Hình thang cân",lv:[
+  L("Định nghĩa: hình thang có hai góc kề một đáy bằng nhau. Tính chất: hai cạnh bên bằng nhau, hai đường chéo bằng nhau.","Hình thang cân ABCD (AB // CD) có AC = 7 cm ⇒ BD = 7 cm",[["Hình thang cân ABCD (AB // CD) có AD = 5 cm. Tính BC","5 cm"],["Hình thang có hai cạnh bên bằng nhau có chắc là hình thang cân không?","Chưa chắc, có thể là hình bình hành"]]),
+  L("Tính góc và cạnh: hai góc kề một đáy bằng nhau, hai góc kề một cạnh bên bù nhau.","D̂ = 70° ⇒ Ĉ = 70°, Â = B̂ = 110°",[["Hình thang cân ABCD (AB // CD) có Â = 2D̂. Tính các góc","Â = B̂ = 120°, Ĉ = D̂ = 60°"],["Hình thang cân có một góc 60°. Tính các góc còn lại","60°, 120°, 120°"]]),
+  L("Chứng minh hình thang cân: chứng minh là hình thang trước, rồi dùng hai góc kề một đáy bằng nhau hoặc hai đường chéo bằng nhau.","Tam giác ABC cân tại A, AM = AN (M ∈ AB, N ∈ AC): góc AMN = góc ABC = (180° − Â)/2 nên MN // BC; lại có B̂ = Ĉ nên BMNC là hình thang cân",[["Hình thang ABCD (AB // CD) có AC = BD. Chứng minh ABCD là hình thang cân","Hình thang có hai đường chéo bằng nhau"],["Hình thang cân ABCD (AB // CD), hai đường chéo cắt nhau tại O. Chứng minh OA = OB","Tam giác ABD = tam giác BAC (c.c.c) nên góc ABD = góc BAC, tam giác OAB cân"]]),
+  L("Kẻ đường cao từ đáy nhỏ: DH = (đáy lớn − đáy nhỏ) : 2, rồi dùng Pythagore.","AB = 4, CD = 10 ⇒ DH = 3",[["Hình thang cân AB = 4 cm, CD = 10 cm, AD = 5 cm. Tính đường cao AH","4 cm"],["Hình thang cân AB = 6 cm, CD = 14 cm, AD = 5 cm. Tính đường cao và diện tích","AH = 3 cm, diện tích 30 cm²"]])]},
+ {name:"Hình bình hành",lv:[
+  L("Tính chất: các cạnh đối bằng nhau, các góc đối bằng nhau, hai đường chéo cắt nhau tại trung điểm mỗi đường.","AB = 5, Â = 70° ⇒ CD = 5, Ĉ = 70°, B̂ = 110°",[["Hình bình hành có những tính chất nào?","Cạnh đối bằng nhau, góc đối bằng nhau, hai đường chéo cắt nhau tại trung điểm mỗi đường"],["Hình bình hành ABCD có Â = 70°. Tính B̂, Ĉ","B̂ = 110°, Ĉ = 70°"]]),
+  L("Tính cạnh, chu vi, đường chéo từ các tính chất.","Chu vi 30 cm, AB = 2BC ⇒ 2(AB + BC) = 30 ⇒ 3BC = 15 ⇒ BC = 5 cm, AB = 10 cm",[["AB = 5 cm, BC = 7 cm. Tính chu vi","24 cm"],["O là giao điểm hai đường chéo, BD = 10 cm. Tính OB","5 cm"]]),
+  L("Chứng minh hình bình hành bằng một trong 5 dấu hiệu, ghi rõ dấu hiệu nào.","Tứ giác ABCD có AB // CD và AB = CD nên là hình bình hành (một cặp cạnh đối vừa song song vừa bằng nhau)",[["Tam giác ABC, M là trung điểm BC, D đối xứng với A qua M. Chứng minh ABDC là hình bình hành","Hai đường chéo AD, BC cắt nhau tại trung điểm M"],["Hình bình hành ABCD, E, F là trung điểm AB, CD. Chứng minh AECF là hình bình hành","AE // CF và AE = CF"]]),
+  L("Dùng hình bình hành đã có để chứng minh hình bình hành mới, tính góc.","Hình bình hành ABCD, E ∈ AB, F ∈ CD, AE = CF ⇒ DEBF là hình bình hành",[["Hình bình hành ABCD, M, N thuộc AC với AM = CN. Chứng minh BMDN là hình bình hành","O là trung điểm AC và BD, OM = ON"],["Hình bình hành ABCD có Â = 120°. Phân giác góc A cắt CD tại E. Tính các góc của tam giác ADE","Đều 60° (tam giác ADE đều)"]])]},
+ {name:"Hình chữ nhật",lv:[
+  L("Tính chất: 4 góc vuông, hai đường chéo bằng nhau và cắt nhau tại trung điểm mỗi đường.","Tứ giác ABCD có Â = B̂ = Ĉ = 90° là hình chữ nhật",[["Hình chữ nhật ABCD, AC = 12 cm. Tính OA","6 cm"],["Hình chữ nhật có phải là hình bình hành không?","Có"]]),
+  L("Tính đường chéo bằng Pythagore; nửa hai đường chéo bằng nhau.","AB = 6 cm, BC = 8 cm ⇒ AC = √(6² + 8²) = 10 cm",[["Hình chữ nhật ABCD có OB = 7 cm. Tính AC","14 cm"],["Góc AOB = 60°, AC = 10 cm. Tính AB, BC","AB = 5 cm, BC = 5√3 cm ≈ 8,66 cm"]]),
+  L("Chứng minh hình chữ nhật: 3 góc vuông, hoặc hình bình hành có 1 góc vuông, hoặc có 2 đường chéo bằng nhau.","Tam giác ABC vuông tại A, đường cao AH, D, E là hình chiếu của H trên AB, AC ⇒ ADHE có 3 góc vuông nên là hình chữ nhật",[["Tam giác ABC cân tại A, đường cao AH, K là trung điểm AC, E đối xứng với H qua K. Chứng minh AHCE là hình chữ nhật","Hai đường chéo cắt nhau tại trung điểm K và góc AHC = 90°"],["Hình bình hành có hai đường chéo bằng nhau là hình gì?","Hình chữ nhật"]]),
+  L("Đưa độ dài cần tìm về đường chéo hình chữ nhật, hoặc lập phương trình theo cạnh.","Tam giác ABC vuông cân tại A, M ∈ BC, N, P là hình chiếu của M trên AB, AC: ANMP là hình chữ nhật nên NP = AM; NP ngắn nhất khi M là trung điểm BC",[["Hình chữ nhật ABCD có chu vi 36 cm, M là trung điểm BC, MA ⊥ MD. Tính các cạnh","AB = 6 cm, BC = 12 cm"],["Ở ví dụ trên, AB = AC = 6 cm. Tính NP ngắn nhất","3√2 cm"]])]},
+ {name:"Trung tuyến ứng với cạnh huyền",lv:[
+  L("Trong tam giác vuông, trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền.","Tam giác ABC vuông tại A, BC = 10 cm ⇒ AM = 5 cm",[["Tam giác ABC vuông tại A có trung tuyến AM = 7,5 cm. Tính BC","15 cm"],["Tam giác vuông có cạnh huyền 13 cm. Tính trung tuyến ứng với cạnh huyền","6,5 cm"]]),
+  L("Kết hợp Pythagore để tìm cạnh huyền hoặc cạnh góc vuông.","AB = 6, AC = 8 ⇒ BC = 10 ⇒ AM = 5",[["AM = 6,5 cm, AB = 5 cm. Tính AC","12 cm"],["AB = 9 cm, AC = 12 cm. Tính AM","7,5 cm"]]),
+  L("Định lí đảo: tam giác có trung tuyến bằng nửa cạnh tương ứng thì vuông.","Tam giác ABC có AM = BC : 2 ⇒ vuông tại A",[["Tam giác ABC có MA = MB = MC (M ∈ BC). Tam giác ABC là tam giác gì?","Vuông tại A"],["Tam giác ABC có trung tuyến AM = 5 cm, BC = 10 cm, AB = 6 cm. Tính AC","8 cm"]]),
+  L("Dùng các tam giác cân MAB, MAC tạo bởi trung tuyến để tính góc, cạnh.","B̂ = 30° ⇒ Ĉ = 60°, tam giác AMC đều ⇒ AC = BC : 2",[["Tam giác ABC vuông tại A, Ĉ = 30°, AB = 4 cm. Tính BC","8 cm"],["Tam giác ABC vuông tại A, M là trung điểm BC, B̂ = 40°. Tính góc AMC","80°"]])]},
+ {name:"Hình thoi",lv:[
+  L("Hình thoi: 4 cạnh bằng nhau; hai đường chéo vuông góc, cắt nhau tại trung điểm mỗi đường và là phân giác các góc.","Tứ giác có 4 cạnh bằng nhau là hình thoi",[["Hình thoi có hai đường chéo như thế nào?","Vuông góc, cắt nhau tại trung điểm mỗi đường, là phân giác các góc"],["Hình thoi cạnh 5 cm. Tính chu vi","20 cm"]]),
+  L("Tính cạnh, góc, đường chéo bằng Pythagore trong tam giác vuông tạo bởi hai nửa đường chéo.","AC = 6 cm, BD = 8 cm ⇒ cạnh = √(3² + 4²) = 5 cm",[["Hình thoi có chu vi 40 cm, một đường chéo 12 cm. Tính đường chéo còn lại","16 cm"],["Hình thoi ABCD có Â = 60°, BD = 7 cm. Tính cạnh","7 cm (tam giác ABD đều)"],["Hình thoi ABCD có Â = 60°. Tính các góc còn lại","B̂ = 120°, Ĉ = 60°, D̂ = 120°"]]),
+  L("Chứng minh hình thoi: 4 cạnh bằng nhau, hoặc hình bình hành có 2 cạnh kề bằng nhau, 2 đường chéo vuông góc, 1 đường chéo là phân giác.","Hình bình hành ABCD có AC ⊥ BD nên là hình thoi",[["Hình bình hành ABCD có AB = AD. Chứng minh ABCD là hình thoi","Hình bình hành có 2 cạnh kề bằng nhau"],["Hình bình hành ABCD có AC là phân giác góc A. ABCD là hình gì?","Hình thoi"]]),
+  L("Bài tổng hợp: tạo hình thoi từ trung điểm, tính diện tích theo hai đường chéo.","Trung điểm 4 cạnh của một hình chữ nhật là đỉnh một hình thoi (4 cạnh bằng nhau, bằng nửa đường chéo)",[["Hình thoi có chu vi 20 cm, tổng hai đường chéo 14 cm. Tính diện tích","24 cm²"],["M là trung điểm BC, D đối xứng với A qua M. Tam giác ABC cần điều kiện gì để ABDC là hình thoi?","Cân tại A (AB = AC)"]])]},
+ {name:"Hình vuông",lv:[
+  L("Hình vuông có 4 góc vuông và 4 cạnh bằng nhau; vừa là hình chữ nhật vừa là hình thoi.","Hình vuông có mọi tính chất của hình chữ nhật và hình thoi",[["Hình vuông có phải là hình chữ nhật không?","Có"],["Hình vuông có chu vi 24 cm. Tính cạnh","6 cm"]]),
+  L("Đường chéo hình vuông cạnh a bằng a√2; hai đường chéo vuông góc và tạo với cạnh góc 45°.","Hình vuông cạnh 4 cm có đường chéo 4√2 cm ≈ 5,66 cm",[["Hình vuông có đường chéo 10 cm. Tính cạnh","5√2 cm ≈ 7,07 cm"],["Hình vuông ABCD, O là giao điểm hai đường chéo. Tính góc AOB, góc OAB","90°, 45°"]]),
+  L("Chứng minh hình vuông: hình chữ nhật có 2 cạnh kề bằng nhau (hoặc 2 đường chéo vuông góc), hình thoi có 1 góc vuông (hoặc 2 đường chéo bằng nhau).","Hình chữ nhật ABCD có AB = AD nên là hình vuông",[["Hình thoi ABCD có Â = 90°. Chứng minh ABCD là hình vuông","Hình thoi có 1 góc vuông"],["Hình chữ nhật có hai đường chéo vuông góc là hình gì?","Hình vuông"]]),
+  L("Chứng minh 4 cạnh bằng nhau và 1 góc vuông qua các tam giác bằng nhau, hoặc tìm điều kiện để thành hình vuông.","Hình vuông ABCD, M, N, P, Q trên AB, BC, CD, DA với AM = BN = CP = DQ ⇒ MNPQ là hình vuông (các tam giác vuông bằng nhau)",[["Tam giác ABC vuông tại A, phân giác góc A cắt BC tại D, E, F là hình chiếu của D trên AB, AC. AEDF là hình gì?","Hình vuông (hình chữ nhật có AD là phân giác)"],["Tam giác ABC vuông tại A, M là trung điểm BC, D đối xứng với M qua AB. Tìm điều kiện để ADBM là hình vuông","Tam giác ABC vuông cân tại A"]])]},
+ {name:"Chứng minh hình học: bằng nhau, song song, vuông góc, trung điểm",lv:[
+  L("Dùng tính chất của hình đã biết để suy ra cạnh bằng nhau, song song, vuông góc.","ABCD là hình bình hành ⇒ AB = CD, AB // CD",[["ABCD là hình chữ nhật. Hai đường chéo có quan hệ gì?","AC = BD"],["ABCD là hình thoi. Hai đường chéo có quan hệ gì?","AC ⊥ BD"]]),
+  L("Chứng minh trung điểm: đưa về hai đường chéo của một hình bình hành.","Hình bình hành ABCD, O là giao điểm hai đường chéo ⇒ O là trung điểm AC và BD",[["Hình bình hành ABCD, M, N là trung điểm AB, CD. Chứng minh MN đi qua trung điểm O của AC","AMCN là hình bình hành nên MN và AC cắt nhau tại trung điểm mỗi đường"],["Tam giác ABC, M là trung điểm BC, D đối xứng với A qua M. Chứng minh AB // CD","ABDC là hình bình hành"]]),
+  L("Chứng minh tứ giác là hình đặc biệt trước, rồi mới dùng tính chất của nó.","Tam giác ABC vuông tại A, M là trung điểm BC, D đối xứng với A qua M: ABDC là hình chữ nhật ⇒ AD = BC ⇒ AM = BC : 2",[["Hình chữ nhật ABCD, O là giao điểm hai đường chéo. Chứng minh tam giác OAB cân","OA = OB = AC : 2 = BD : 2"],["Hình bình hành ABCD có AB = 2AD, M là trung điểm AB. Chứng minh DM ⊥ CM","Tam giác ADM, BCM cân nên góc AMD + góc BMC = 180° − (Â + B̂)/2 = 90°"]]),
+  L("Kẻ thêm đường phụ hoặc dựng hình bình hành, hình chữ nhật để chứng minh thẳng hàng, bằng nhau.","Hình bình hành ABCD, E ∈ AB, F ∈ CD, AE = CF: DEBF là hình bình hành nên EF đi qua trung điểm O của BD, tức E, O, F thẳng hàng",[["Hình bình hành ABCD, M, N là trung điểm AB, CD. Chứng minh AN // CM","AMCN là hình bình hành"],["Tam giác ABC vuông tại A, đường cao AH, D, E là hình chiếu của H trên AB, AC. Chứng minh DE = AH","ADHE là hình chữ nhật nên hai đường chéo bằng nhau"]])]},
+ {name:"Tìm điều kiện và bài tổng hợp",lv:[
+  L("Nắm sơ đồ: hình bình hành thêm điều kiện gì thì thành hình chữ nhật, hình thoi, hình vuông.","Hình bình hành + 1 góc vuông = hình chữ nhật; + 2 cạnh kề bằng nhau = hình thoi",[["Hình bình hành cần thêm điều kiện gì về đường chéo để là hình chữ nhật?","Hai đường chéo bằng nhau"],["Hình bình hành cần thêm điều kiện gì về đường chéo để là hình thoi?","Hai đường chéo vuông góc"]]),
+  L("Từ hình chữ nhật hoặc hình thoi, thêm điều kiện để thành hình vuông.","Hình bình hành có hai đường chéo vừa bằng nhau vừa vuông góc là hình vuông",[["Hình chữ nhật cần thêm điều kiện gì để là hình vuông?","Hai cạnh kề bằng nhau, hoặc hai đường chéo vuông góc"],["Hình thoi cần thêm điều kiện gì để là hình vuông?","Một góc vuông, hoặc hai đường chéo bằng nhau"]]),
+  L("Tìm điều kiện của tam giác ban đầu để tứ giác tạo thành là hình đặc biệt.","M là trung điểm BC, N đối xứng với M qua trung điểm I của AC ⇒ AMCN là hình bình hành; là hình chữ nhật khi AM ⊥ BC, tức tam giác ABC cân tại A",[["M là trung điểm BC, D đối xứng với A qua M. ABDC là hình thoi khi nào?","Khi AB = AC"],["Cùng hình đó, ABDC là hình chữ nhật khi nào?","Khi Â = 90°"]]),
+  L("Bài tổng hợp nhiều ý: chứng minh hình, rồi tìm điều kiện để thành hình vuông hoặc tìm vị trí điểm.","Tam giác ABC vuông tại A, M là trung điểm BC, D đối xứng với M qua AB: ADBM là hình thoi; là hình vuông khi tam giác ABC vuông cân tại A",[["M là trung điểm BC, D đối xứng với A qua M. ABDC là hình vuông khi nào?","Khi tam giác ABC vuông cân tại A"],["Tam giác ABC vuông tại A, M ∈ BC, N, P là hình chiếu của M trên AB, AC. ANMP là hình vuông khi M ở đâu?","Khi AM là phân giác góc A"]])]}
+];
+SUBJ.toan8.plan[2]={note:"Tỷ trọng bài tập tham khảo: Nhận biết 20% · Thông hiểu 30% · Vận dụng 35% · Vận dụng cao 15%. Cấu trúc buổi 90 phút: 10' kiểm tra bài cũ · 20' giảng kiến thức · 30' luyện theo dạng · 20' bài vận dụng · 10' tổng kết, giao bài. Tư duy cần rèn: nhìn dữ kiện → nhận diện loại hình → chọn tính chất hoặc dấu hiệu → lập luận → kết luận.",
+ mistakes:[["Hình thang có hai cạnh bên bằng nhau thì là hình thang cân","Cần xét thêm, vì có thể là hình bình hành"],["Tứ giác có hai đường chéo bằng nhau là hình chữ nhật","Phải là hình bình hành có hai đường chéo bằng nhau"],["Tứ giác có hai đường chéo vuông góc là hình thoi","Phải là hình bình hành có hai đường chéo vuông góc"],["Một cặp cạnh song song, cặp còn lại bằng nhau thì là hình bình hành","Cặp cạnh song song và bằng nhau phải là cùng một cặp cạnh đối"],["Dùng tính chất hình chữ nhật, hình thoi khi chưa chứng minh tứ giác là hình đó","Chứng minh hình trước, rồi mới dùng tính chất"]],
+ rows:[
+ [1,"Tứ giác, hình thang, hình thang cân","Nhận biết – Thông hiểu – Vận dụng",[0,1],"Đầu buổi: kiểm tra đầu vào (góc, tam giác, chứng minh cơ bản)."],
+ [2,"Hình bình hành","Nhận biết – Thông hiểu – Vận dụng",[2],""],
+ [3,"Hình chữ nhật và trung tuyến ứng với cạnh huyền","Nhận biết – Thông hiểu – Vận dụng",[3,4],"Đầu buổi: kiểm tra ngắn hình thang cân, hình bình hành."],
+ [4,"Hình thoi, hình vuông","Nhận biết – Thông hiểu – Vận dụng",[5,6],""],
+ [5,"Tổng hợp tứ giác đặc biệt: phân tích dữ kiện, chọn dấu hiệu","Thông hiểu – Vận dụng",[],"Đầu buổi: kiểm tra ngắn hình chữ nhật, hình thoi, hình vuông. Luyện lại mức Vận dụng của các dạng hình bình hành đến hình vuông."],
+ [6,"Chứng minh hình học: bằng nhau, song song, vuông góc, trung điểm","Vận dụng",[7],""],
+ [7,"Vận dụng cao: tìm điều kiện, kẻ đường phụ, bài tổng hợp","Vận dụng – Vận dụng cao",[8],""],
+ [8,"Ôn tập và kiểm tra cuối chương","Tổng hợp 4 mức độ",[],""]]};
+SUBJ.toan8.byCh[3]=[
+ {name:"Định lí Thalès: tính độ dài, tỉ số đoạn thẳng",lv:[
+  L("Viết đúng tỉ lệ thức AM/AB = AN/AC hoặc AM/MB = AN/NC khi có đường thẳng song song với một cạnh, rồi nhân chéo. Tỉ số hai đoạn thẳng phải cùng đơn vị.","MN // BC, AM = 3, MB = 2, AN = 4,5 ⇒ 3/2 = 4,5/NC ⇒ NC = 3",[["Tỉ số của AB = 15 cm và CD = 35 cm","3/7"],["DE // BC (D ∈ AB, E ∈ AC), AD = 2 cm, DB = 4 cm, AE = 3 cm. Tính EC","6 cm"],["DE // BC, AD/AB = 2/5, AC = 15 cm. Tính AE","6 cm"]]),
+  L("Khi đề cho cả cạnh, tính đoạn còn lại bằng tổng/hiệu rồi lập tỉ lệ thức thích hợp.","DE // BC, AD = 4, AB = 6, AC = 9 ⇒ AE/AC = 4/6 ⇒ AE = 6",[["DE // BC, AD = 3 cm, AB = 8 cm, EC = 10 cm. Tính AE","6 cm"],["MN // BC, AM = x, MB = 3, AN = 4, NC = 6. Tìm x","x = 2"],["Tỉ số của AB = 30 cm và CD = 2 m","3/20"]]),
+  L("Bài toán thực tế và bài dùng thêm đường song song phụ.","Đo khoảng cách BE qua sông: AF = 40 m, FC = 20 m, EC = 30 m, EF // AB ⇒ CE/CB = CF/CA = 1/3 ⇒ CB = 90 m ⇒ BE = 60 m",[["DE // BC, qua E kẻ EF // AB (F ∈ BC). AD = 2, AB = 5, BC = 10. Tính DE","DE = BF = 4 (BDEF là hình bình hành)"],["Hình thang ABCD (AB // CD), đường song song hai đáy cắt AD tại M, AC tại I. AM/AD = 1/3, CD = 12 cm. Tính MI","4 cm"]]),
+  L("Dùng Thalès trong hình thang hoặc nhiều tam giác liên tiếp.","Hình thang ABCD (AB // CD), đường song song hai đáy cắt AD, AC, BC tại M, I, N: AM/AD = AI/AC và CN/CB = CI/CA nên AM/AD + CN/CB = 1",[["Tam giác ABC có trọng tâm G. Đường thẳng qua G song song AB cắt BC tại M. Tính BM/BC","1/3"],["Hình thang ABCD (AB // CD), hai đường chéo cắt nhau tại O. Qua O kẻ đường song song hai đáy cắt AD tại E, BC tại F. Chứng minh OE = OF","OE/CD = AO/AC = BO/BD = OF/CD"]])]},
+ {name:"Định lí Thalès đảo: chứng minh song song",lv:[
+  L("Nếu AM/MB = AN/NC thì MN // BC. Dùng định lí đảo khi cần chứng minh song song.","AM = 3, MB = 6, AN = 2, NC = 4 ⇒ 1/2 = 1/2 ⇒ MN // BC",[["AM = 2, MB = 4, AN = 3, NC = 6. MN có song song BC không?","Có (1/2 = 1/2)"],["AM = 2, MB = 3, AN = 3, NC = 4. MN có song song BC không?","Không (2/3 ≠ 3/4)"]]),
+  L("Có thể so sánh AM/AB với AN/AC; rút gọn phân số trước khi so sánh.","AM = 3, AB = 9, AN = 4, AC = 12 ⇒ 1/3 = 1/3 ⇒ MN // BC",[["AM = 5, AB = 15, AN = 6, AC = 18. MN // BC?","Có (1/3 = 1/3)"],["AM = 4, AB = 10, AN = 6, AC = 14. MN // BC?","Không (2/5 ≠ 3/7)"]]),
+  L("Tìm độ dài để hai đường thẳng song song; chứng minh song song rồi dùng tiếp cho bước sau.","AM = 2, MB = 3, AN = x, NC = 6. MN // BC khi 2/3 = x/6 ⇒ x = 4",[["AM = 4, MB = 6, AN = 6, NC = x. Tìm x để MN // BC","x = 9"],["AB = 6, AC = 9, AM = 2, AN = 3. Chứng minh MN // BC","AM/AB = 1/3 = AN/AC"]]),
+  L("Phối hợp thuận và đảo qua nhiều tam giác.","O nằm trong tam giác ABC, D ∈ OA, DE // AB (E ∈ OB), DF // AC (F ∈ OC) ⇒ OE/OB = OD/OA = OF/OC ⇒ EF // BC",[["AB = 6, AC = 9, AM = 2, AN = 3, P ∈ BC với NP // AB. BMNP là hình gì?","Hình bình hành (MN // BP, NP // BM)"],["Hình thang ABCD (AB // CD), M ∈ AD, N ∈ BC với AM/MD = BN/NC. Chứng minh MN // CD","Lấy I ∈ AC với MI // CD: AI/IC = AM/MD = BN/NC nên IN // AB // CD, suy ra M, I, N thẳng hàng và MN // CD"]])]},
+ {name:"Đường trung bình của tam giác",lv:[
+  L("Đường trung bình nối trung điểm 2 cạnh, song song với cạnh thứ ba và bằng nửa cạnh đó.","M, N là trung điểm AB, AC, BC = 12 cm ⇒ MN = 6 cm",[["Tam giác DEF, H, K là trung điểm DE, DF, HK = 8 cm. Tính EF","16 cm"],["Tam giác ABC có chu vi 24 cm. Tính chu vi tam giác tạo bởi 3 đường trung bình","12 cm"],["M, N là trung điểm AB, AC, góc ABC = 65°. Tính góc AMN","65°"]]),
+  L("Đường thẳng qua trung điểm một cạnh, song song với cạnh thứ hai thì đi qua trung điểm cạnh thứ ba.","M là trung điểm AB, qua M kẻ đường song song BC cắt AC tại N ⇒ N là trung điểm AC",[["M là trung điểm AB, MN // BC (N ∈ AC), AC = 10 cm. Tính AN","5 cm"],["M, N là trung điểm AB, AC, MN = 4,5 cm. Tính BC","9 cm"]]),
+  L("Bài toán thực tế và chứng minh trung điểm, hình đặc biệt bằng đường trung bình.","Đo BC bị hồ nước ngăn: chọn điểm A, đo M, N là trung điểm AB, AC; MN = 35 m ⇒ BC = 70 m",[["Tam giác ABC có trung tuyến AM. Lấy D, E trên AB sao cho AD = DE = EB; DC cắt AM tại I. Chứng minh I là trung điểm AM","Trong tam giác BCD, EM // DC; trong tam giác AEM, DI // EM nên I là trung điểm AM"],["Tam giác ABC vuông tại A, H, I, K là trung điểm AB, BC, AC. Chứng minh AHIK là hình chữ nhật","AHIK là hình bình hành có Â = 90°"]]),
+  L("Kết hợp đường trung bình trong nhiều tam giác để chứng minh tứ giác đặc biệt.","E, F, G, H là trung điểm AB, BC, CD, DA ⇒ EFGH là hình bình hành (EF // AC // HG, EF = HG = AC/2)",[["ABCD là hình chữ nhật. Chứng minh EFGH là hình thoi","4 cạnh bằng nhau, bằng AC/2"],["Tứ giác ABCD có AC ⊥ BD. Chứng minh EFGH là hình chữ nhật","Hình bình hành có 2 cạnh kề vuông góc"],["Lấy D ∈ AB, E ∈ AC với BD = CE; M, N, I, K là trung điểm BE, CD, DE, BC. Chứng minh MN ⊥ IK","MINK là hình thoi"]])]},
+ {name:"Tính chất đường phân giác",lv:[
+  L("AD là phân giác góc A thì DB/DC = AB/AC: đoạn kề cạnh nào tỉ lệ với cạnh đó.","AB = 4 cm, AC = 6 cm, DB = 3 cm ⇒ DC = 6 · 3 : 4 = 4,5 cm",[["AB = 6 cm, AC = 9 cm, DC = 6 cm. Tính DB","4 cm"],["Tam giác MPQ, MN là phân giác góc M, MP = 4 cm, MQ = 6 cm, NP = 3 cm. Tính NQ","4,5 cm"],["AB = 5 cm, AC = 7 cm. Tính DB/DC","5/7"]]),
+  L("Biết cả cạnh BC thì chia BC theo tỉ số AB : AC.","AB = 6, AC = 8, BC = 7 ⇒ DB/DC = 3/4 ⇒ DB = 3 cm, DC = 4 cm",[["AB = 12 cm, AC = 15 cm, BC = 18 cm. Tính DB, DC","DB = 8 cm, DC = 10 cm"],["Tam giác ABC vuông tại A, AB = 6, AC = 8, BC = 10. Phân giác BD cắt AC tại D. Tính AD, DC","AD = 3 cm, DC = 5 cm"],["AB = 5 cm, AC = 7 cm, BC = 6,5 cm. Tính DC (làm tròn 1 chữ số thập phân)","DC ≈ 3,8 cm"]]),
+  L("Định lí đảo, và phối hợp với Thalès đảo để chứng minh song song.","Trung tuyến AM; phân giác góc AMB cắt AB tại D, phân giác góc AMC cắt AC tại E: DA/DB = MA/MB = MA/MC = EA/EC ⇒ DE // BC",[["AB = 4, AC = 6, BC = 5, D ∈ BC với DB = 2. AD có là phân giác góc A không?","Có: DC = 3, DB/DC = 2/3 = AB/AC"],["Tam giác ABC cân tại A, phân giác BD và CE. Chứng minh DE // BC","DA/DC = EA/EB vì AB = AC"]]),
+  L("Đẳng thức và tỉ số diện tích liên quan đến đường phân giác.","S(ABD)/S(ACD) = DB/DC = AB/AC (hai tam giác có chung chiều cao từ A)",[["AD là phân giác, kẻ DE // AB (E ∈ AC). Chứng minh 1/DE = 1/AB + 1/AC","DE = AB · AC/(AB + AC)"],["Tam giác ABC vuông tại A, phân giác AD, AB = c, AC = b. Tính AD theo b, c","AD = bc√2/(b + c)"]])]},
+ {name:"Tổng hợp: Thalès, đường trung bình, đường phân giác",lv:[
+  L("Nhìn dữ kiện để chọn định lí: có song song thì dùng Thalès; có trung điểm thì nghĩ đến đường trung bình; có phân giác thì dùng tính chất phân giác.","Đề cho MN // BC và hỏi độ dài ⇒ dùng định lí Thalès",[["Đề cho M, N là trung điểm AB, AC. Nên nghĩ đến kiến thức nào?","Đường trung bình"],["Đề cho AD là phân giác và hỏi DB. Dùng kiến thức nào?","Tính chất đường phân giác"]]),
+  L("Mỗi ý dùng một định lí, tính lần lượt.","AB = 6, AC = 9, BC = 10, phân giác AD, M, N là trung điểm AB, AC ⇒ DB = 4, MN = 5",[["AB = 8, AC = 12, BC = 15, phân giác AD. Tính DB","6"],["Cùng tam giác đó, M là trung điểm AB, MN // BC (N ∈ AC). Tính MN","7,5"]]),
+  L("Phối hợp hai định lí trong cùng một ý.","AB = 6, AC = 9, BC = 10, phân giác AD, kẻ DE // AB (E ∈ AC): DC = 6 ⇒ DE/AB = DC/BC = 3/5 ⇒ DE = 3,6",[["Cùng hình, tính AE","AE/AC = BD/BC = 2/5 ⇒ AE = 3,6"],["M, N là trung điểm AB, AC, MN = 5, AB = 6, AC = 8. Phân giác AD. Tính DB","BC = 10, DB = 30/7"]]),
+  L("Bài nhiều ý vừa sức, kết hợp cả ba nội dung.","Phân giác AD, M, N là trung điểm AB, AC; MN cắt AD tại I. Trong tam giác ABD, MI // BD và M là trung điểm AB nên I là trung điểm AD",[["Cùng hình, AB = 6, AC = 9, BC = 10. Tính MI","MI = DB : 2 = 2"],["Cùng hình, tính IN","IN = DC : 2 = 3"]])]}
+];
+SUBJ.toan8.plan[3]={note:"Tỷ trọng bài tập tham khảo: Nhận biết 20% · Thông hiểu 35% · Vận dụng 35% · Vận dụng cao 10%. Nguyên tắc: buổi 1–7 làm chắc từng dạng; buổi 8 luyện phối hợp, có thể đưa 1–2 bài nâng cao vừa sức; buổi 9 kiểm tra, chữa lỗi và củng cố phần còn yếu.",
+ mistakes:[["Đặt sai vị trí đoạn thẳng trong tỉ lệ thức (AM/MB = NC/AN)","Đoạn cùng vị trí đứng cùng chỗ: AM/MB = AN/NC"],["Dùng định lí Thalès khi đề chưa cho hai đường thẳng song song","Chưa có song song thì chỉ dùng được định lí đảo để chứng minh song song"],["Ở tính chất phân giác, ghép DB với AC","DB đi với AB, DC đi với AC (đoạn nằm cạnh B đi với cạnh AB)"]],
+ rows:[
+ [1,"Định lí Thalès trong tam giác","Nhận biết – Thông hiểu – Vận dụng",["0:012"],"Lập tỉ lệ thức, tính độ dài đoạn thẳng."],
+ [2,"Định lí Thalès đảo","Nhận biết – Thông hiểu – Vận dụng",["1:012"],"Nhận biết và chứng minh hai đường thẳng song song."],
+ [3,"Luyện tập định lí Thalès","Vận dụng – Vận dụng cao",["0:3","1:3"],"Kết hợp định lí thuận và đảo."],
+ [4,"Đường trung bình của tam giác","Nhận biết – Thông hiểu",["2:01"],""],
+ [5,"Luyện tập đường trung bình","Vận dụng – Vận dụng cao",["2:23"],"Tính độ dài, chứng minh song song, bài toán thực tế."],
+ [6,"Tính chất đường phân giác trong tam giác","Nhận biết – Thông hiểu",["3:01"],""],
+ [7,"Luyện tập đường phân giác","Vận dụng – Vận dụng cao",["3:23"],"Tính toán và chứng minh theo định lí thuận, đảo."],
+ [8,"Ôn tập tổng hợp ba nội dung","Thông hiểu – Vận dụng – Vận dụng cao",[4],"Có thể đưa 1–2 bài nâng cao vừa sức."],
+ [9,"Ôn tập và kiểm tra cuối chương","Tổng hợp 4 mức độ",[],"Kiểm tra, chữa lỗi, củng cố phần còn yếu."]]};
+SUBJ.toan8.byCh[4]=[
+ {name:"Thu thập, phân loại dữ liệu, tính hợp lí",lv:[
+  L("Dữ liệu định tính mô tả bằng chữ (màu, tên môn, nơi sinh); dữ liệu định lượng là số (chiều cao, điểm, số giờ). Thu thập bằng quan sát, phỏng vấn, phiếu hỏi hoặc lấy từ nguồn có sẵn.","Màu sắc yêu thích là dữ liệu định tính; chiều cao (cm) là dữ liệu định lượng",[["Số anh chị em của mỗi bạn trong lớp là dữ liệu gì?","Định lượng"],["Môn thể thao yêu thích là dữ liệu gì?","Định tính"],["Muốn biết nhiệt độ cao nhất các ngày trong tuần, nên thu thập bằng cách nào?","Lấy từ nguồn có sẵn (bản tin thời tiết, website)"]]),
+  L("Phân nhóm dữ liệu theo tiêu chí; kiểm tra tính hợp lí: đúng định dạng, nằm trong phạm vi dự kiến.","Điểm kiểm tra thang 10 ghi 11 là không hợp lí (ngoài phạm vi)",[["Tuổi học sinh lớp 8 ghi: 13, 14, 13, mười bốn, 41. Dữ liệu nào chưa hợp lí?","\"mười bốn\" sai định dạng (phải ghi số); 41 nằm ngoài phạm vi"],["Phân loại: tên, cân nặng (kg), nơi sinh, số giờ ngủ","Định tính: tên, nơi sinh. Định lượng: cân nặng, số giờ ngủ"]]),
+  L("Kiểm tra mối liên hệ giữa số liệu thành phần và tổng.","Lớp 40 bạn, mỗi bạn chọn 1 môn: bóng đá 15, cầu lông 12, bơi 10, bóng rổ 8 ⇒ tổng 45 > 40, dữ liệu không hợp lí",[["Khối 8 có 4 lớp, sĩ số 38, 40, 41, 39; bảng ghi tổng 160. Có hợp lí không?","Không: tổng đúng là 158"],["Tỉ lệ phương tiện đến trường: xe đạp 45%, xe buýt 25%, đi bộ 20%, bố mẹ đưa 15%. Có hợp lí không?","Không: tổng là 105%, phải là 100%"]]),
+  L("Xét tính đại diện của mẫu khảo sát và đề xuất cách thu thập tốt hơn.","Muốn biết món ăn sáng yêu thích của cả trường mà chỉ hỏi lớp 8A thì kết quả không đại diện cho cả trường",[["Khảo sát thời gian dùng điện thoại của học sinh cả trường, An chỉ hỏi 10 bạn trong câu lạc bộ game. Kết quả có đại diện không?","Không, nhóm này có thể dùng điện thoại nhiều hơn mức chung"],["Đề xuất cách khảo sát trên đại diện hơn","Chọn ngẫu nhiên vài bạn ở mỗi lớp, đủ các khối 6–9"]])]},
+ {name:"Đọc và lựa chọn biểu đồ",lv:[
+  L("Phân biệt biểu đồ cột, cột kép, đoạn thẳng, hình quạt tròn; đọc giá trị trực tiếp từ bảng hoặc biểu đồ.","Biểu đồ đoạn thẳng thường dùng để thể hiện sự thay đổi theo thời gian",[["Biểu đồ nào thích hợp để biểu diễn tỉ lệ % các thành phần của một tổng thể?","Biểu đồ hình quạt tròn"],["Số học sinh giỏi: Toán 12, Văn 8, Anh 10. Môn nào nhiều nhất?","Toán"]]),
+  L("Chọn biểu đồ theo mục đích: so sánh các nhóm (cột), so sánh hai đối tượng (cột kép), thay đổi theo thời gian (đoạn thẳng), tỉ lệ trong tổng thể (quạt tròn).","So sánh số sách đọc được của nam và nữ qua từng tháng ⇒ biểu đồ cột kép",[["Nhiệt độ trung bình 12 tháng trong năm nên dùng biểu đồ nào?","Biểu đồ đoạn thẳng"],["Số học sinh mỗi lớp của khối 8 nên dùng biểu đồ nào?","Biểu đồ cột"]]),
+  L("Đọc tên biểu đồ, tên trục, đơn vị, chú giải trước khi lấy số liệu.","Biểu đồ cột kép lớp 8A: nam (cột xanh) 18 bạn, nữ (cột cam) 22 bạn ⇒ nữ hơn nam 4 bạn",[["Doanh thu cửa hàng (triệu đồng): tháng 1: 20, tháng 2: 25, tháng 3: 22, tháng 4: 30. Tháng nào giảm so với tháng trước?","Tháng 3"],["Biểu đồ quạt tròn: Toán 30%, Văn 25%, Anh 20%, môn khác 25%. Lớp 40 bạn, bao nhiêu bạn thích Toán?","12 bạn"]]),
+  L("Kết hợp số liệu từ nhiều biểu đồ; nhận ra biểu đồ dễ gây hiểu nhầm.","Biểu đồ cột cho sĩ số, biểu đồ quạt cho tỉ lệ: nhân sĩ số với tỉ lệ để so sánh số người",[["8A có 40 bạn, 30% thích bóng đá; 8B có 35 bạn, 40% thích bóng đá. Lớp nào có nhiều bạn thích bóng đá hơn?","8B (14 bạn so với 12 bạn)"],["Biểu đồ cột có trục đứng bắt đầu từ 50 thay vì 0. Vì sao dễ gây hiểu nhầm?","Chênh lệch giữa các cột trông lớn hơn thực tế"]])]},
+ {name:"Biểu diễn và chuyển đổi dữ liệu",lv:[
+  L("Lập bảng thống kê từ dãy dữ liệu; điền số liệu còn thiếu.","Điểm: 8, 9, 8, 7, 9, 8 ⇒ điểm 7: 1 bạn, điểm 8: 3 bạn, điểm 9: 2 bạn",[["Lập bảng từ: Táo, Cam, Táo, Xoài, Táo, Cam","Táo 3, Cam 2, Xoài 1"],["Tổng 30 bạn, nhóm A 12, nhóm B 10. Nhóm C bao nhiêu?","8"]]),
+  L("Hoàn thiện biểu đồ: xác định chiều cao cột, vị trí điểm theo thang chia của trục.","Biểu đồ cột: trục ngang là tên lớp, trục đứng là số học sinh; cột 8A cao đến vạch 38",[["Trục đứng mỗi vạch là 5 học sinh. Cột 20 học sinh cao mấy vạch?","4 vạch"],["Nhiệt độ: thứ Ba 30°C, thứ Tư 27°C. Trên biểu đồ đoạn thẳng, điểm thứ Tư cao hơn hay thấp hơn điểm thứ Ba?","Thấp hơn"]]),
+  L("Chuyển bảng hoặc biểu đồ cột sang tỉ lệ % để vẽ quạt tròn, và ngược lại.","40 bạn, 10 bạn thích Toán ⇒ 10/40 = 25%",[["Đi bộ 8, xe đạp 20, xe buýt 12 (40 bạn). Chuyển sang tỉ lệ %","20%, 50%, 30%"],["Quạt tròn của 25 bạn: Toán 40%, Văn 36%, Anh 24%. Chuyển thành số bạn","10, 9, 6"]]),
+  L("Chọn dạng biểu diễn phù hợp với dữ liệu và giải thích.","Dữ liệu theo thời gian vẽ được bằng cột hoặc đoạn thẳng; đoạn thẳng cho thấy xu hướng rõ hơn",[["Số cây trồng: 2021: 120, 2022: 150, 2023: 180, 2024: 170. Nên dùng biểu đồ nào để thấy xu hướng? Nhận xét","Đoạn thẳng; tăng từ 2021 đến 2023 rồi giảm năm 2024"],["Có dùng biểu đồ quạt tròn cho dữ liệu trên được không?","Không, vì đây không phải các phần của một tổng thể"]])]},
+ {name:"Phân tích và xử lí dữ liệu",lv:[
+  L("Tìm giá trị lớn nhất, nhỏ nhất, tính tổng.","Số sách: 8A 45, 8B 52, 8C 38 ⇒ 8B nhiều nhất, tổng 135",[["Điểm Toán của An: 7, 8, 9. Điểm cao nhất?","9"],["Sĩ số 8A 38, 8B 40. Tổng?","78"]]),
+  L("Tính trung bình, tỉ lệ phần trăm.","Trung bình của 45, 52, 38 là 135 : 3 = 45",[["Nhiệt độ 5 ngày: 28, 30, 29, 31, 32. Trung bình?","30°C"],["Lớp 40 bạn, 14 bạn đạt giỏi. Tỉ lệ %?","35%"]]),
+  L("Nhận xét xu hướng, so sánh, kiểm chứng nhận định. Phân biệt tăng bao nhiêu đơn vị với tăng bao nhiêu phần trăm.","Doanh thu tháng 1: 20 triệu, tháng 2: 25 triệu ⇒ tăng 5 triệu, tức tăng 25%",[["Học sinh giỏi năm trước 40, năm nay 50. Tăng bao nhiêu bạn, bao nhiêu %?","10 bạn, 25%"],["Nhận định: 8A (40 bạn, 10 giỏi) có tỉ lệ giỏi cao hơn 8B (32 bạn, 9 giỏi). Đúng hay sai?","Sai: 8A 25%, 8B khoảng 28,1%"]]),
+  L("Phối hợp nhiều phép tính để đánh giá nhận định, đề xuất giải pháp có dẫn số liệu.","Bán áo: tháng 1: 120, tháng 2: 150, tháng 3: 135. Nhận định \"doanh số tăng đều\" sai, vì tháng 3 giảm 15 áo (10%)",[["8A có 40 bạn, điểm trung bình 7,5; 8B có 35 bạn, điểm trung bình 8. Tính điểm trung bình chung","580 : 75 ≈ 7,73"],["Tỉ lệ thích: bóng đá 35%, cầu lông 30%, bơi 20%, khác 15%. Nên mở câu lạc bộ nào trước?","Bóng đá (tỉ lệ cao nhất 35%), sau đó cầu lông"]])]}
+];
+SUBJ.toan8.plan[4]={note:"Tỷ trọng bài tập tham khảo: Nhận biết 20% · Thông hiểu 35% · Vận dụng 35% · Vận dụng cao 10%. Cấu trúc buổi 90 phút: 10' ôn và chữa bài cũ · 20' giảng, hướng dẫn phương pháp · 35' luyện cơ bản, thông hiểu · 20' luyện vận dụng · 5' tổng kết, giao bài. Trọng tâm: đọc đúng dữ liệu, chọn phép tính phù hợp và giải thích được kết quả bằng số liệu.",
+ mistakes:[["Nhầm dữ liệu định tính và định lượng","Cho ví dụ đối chiếu, yêu cầu giải thích vì sao phân loại như vậy"],["Không kiểm tra tổng số liệu","Tập thói quen cộng và đối chiếu với tổng thể"],["Đọc nhầm trục hoặc đơn vị","Đọc tên trục và đơn vị trước khi lấy số liệu"],["Nhầm giá trị giữa hai đối tượng trên biểu đồ cột kép","Phân biệt chú giải và từng cột"],["Chọn sai biểu đồ","Xác định mục đích biểu diễn trước khi chọn"],["Tính sai tỉ lệ phần trăm","Ôn lại phép chia, nhân và cách làm tròn"],["Nhận xét biểu đồ thiếu căn cứ","Dẫn số liệu cụ thể khi nhận xét"],["Nhầm tăng bao nhiêu đơn vị với tăng bao nhiêu phần trăm","Luyện riêng hai kiểu câu hỏi"]],
+ rows:[
+ [1,"Thu thập, phân loại dữ liệu và tính hợp lí","Nhận biết – Thông hiểu – Vận dụng",["0:012"],"Đầu buổi: kiểm tra nhanh phân loại dữ liệu, đọc biểu đồ đơn giản."],
+ [2,"Đọc bảng, biểu đồ và chọn biểu đồ phù hợp","Nhận biết – Thông hiểu – Vận dụng",["1:012"],"Đầu buổi: kiểm tra ngắn thu thập, phân loại, tính hợp lí."],
+ [3,"Biểu diễn và chuyển đổi dữ liệu","Nhận biết – Thông hiểu – Vận dụng",["2:012"],"Không bỏ qua phần chuyển đổi: học sinh hay lúng túng ở đây."],
+ [4,"Phân tích, xử lí dữ liệu","Nhận biết – Thông hiểu – Vận dụng – Vận dụng cao",["3:0123"],"Đầu buổi: kiểm tra ngắn đọc, biểu diễn, chuyển đổi. Vận dụng cao chỉ 1–2 bài."],
+ [5,"Ôn tập và kiểm tra cuối chủ đề","Tổng hợp 4 mức độ",["0:3","1:3","2:3"],"Có thể làm 60' kiểm tra, 30' chữa bài. Chọn lọc vài bài Vận dụng cao của các dạng 1–3."]]};
+SUBJ.toan8.terms=[[0,4],[5,9]];
+const now=new Date();const TODAY=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+const TODAY_ISO=`${TODAY.getFullYear()}-${String(TODAY.getMonth()+1).padStart(2,"0")}-${String(TODAY.getDate()).padStart(2,"0")}`;
+const SAMPLE={
+ toan:{status:{0:2,1:2,2:2,3:1},exam:{name:"Kiểm tra cuối kì 1",date:"2026-12-21",scope:[0,1,2,3]},
+  sessions:[{date:"2026-10-22",d:2,content:"Nhân đa thức với đa thức",hw:"Bài luyện mức Thông hiểu"},{date:"2026-11-03",d:3,content:"Chia đơn thức cho đơn thức",hw:"Bài luyện mức Nhận biết"},{date:"2026-11-05",d:3,content:"Chia đa thức cho đơn thức",hw:"Bài luyện mức Thông hiểu"}],
+  tests:[{date:"2026-10-17",type:"Kiểm tra tuần",scope:"Thu gọn, cộng trừ đa thức",score:8.5,wrong:["0:3","1:1"]},{date:"2026-10-24",type:"Kiểm tra tuần",scope:"Nhân đa thức",score:7,wrong:["2:2","2:3"]},{date:"2026-10-31",type:"Kiểm tra tháng",scope:"Chương I (đến nhân đa thức)",score:7.5,wrong:["2:2","1:1"]},{date:"2026-11-06",type:"Kiểm tra tuần",scope:"Chia đa thức cho đơn thức",score:8,wrong:["3:2"]}],
+  review:{"1:1":{date:"2026-11-13",done:false}}},
+ khtn:{status:{0:2,1:2,2:1},exam:{name:"Kiểm tra cuối kì 1",date:"2026-12-18",scope:[0,1,2]},
+  sessions:[{date:"2026-10-27",d:1,content:"Nồng độ phần trăm, nồng độ mol",hw:"Bài luyện mức Thông hiểu"},{date:"2026-11-04",d:2,content:"Định luật bảo toàn khối lượng",hw:"Bài luyện mức Nhận biết"},{date:"2026-11-10",d:2,content:"Cân bằng phương trình hoá học",hw:"Bài luyện mức Thông hiểu"}],
+  tests:[{date:"2026-10-16",type:"Kiểm tra tuần",scope:"Mol và tỉ khối chất khí",score:7.5,wrong:["0:3"]},{date:"2026-10-30",type:"Kiểm tra tuần",scope:"Dung dịch và nồng độ",score:6,wrong:["1:2","1:3"]},{date:"2026-11-06",type:"Kiểm tra tháng",scope:"Bài 3 – Bài 4",score:7,wrong:["1:2","0:1"]}],
+  review:{}},
+ anh:{status:{0:2,1:2,2:2,3:1},exam:{name:"Kiểm tra cuối kì 1",date:"2026-12-16",scope:[0,1,2,3,4,5]},
+  sessions:[{date:"2026-10-14",d:1,content:"Like/love + V-ing hoặc to V",hw:"Bài luyện mức Thông hiểu"},{date:"2026-10-21",d:2,content:"Phát âm /ʊ/ và /uː/",hw:"Đọc to 10 từ"},{date:"2026-11-09",d:3,content:"Câu chủ đề và lí do",hw:"Viết 3 câu về sở thích"}],
+  tests:[{date:"2026-10-09",type:"Kiểm tra tuần",scope:"Unit 1 từ vựng, ngữ pháp",score:8,wrong:["1:1"]},{date:"2026-10-23",type:"Kiểm tra tuần",scope:"Unit 1 phát âm",score:6.5,wrong:["2:1","2:3"]},{date:"2026-11-06",type:"Kiểm tra tháng",scope:"Unit 1",score:7.5,wrong:["1:3","2:1"]}],
+  review:{"2:1":{date:"2026-11-12",done:false}}}
+};
+const S6={
+ toan6:{status:{0:2,1:2,2:1},exam:{name:"Kiểm tra cuối kì 1",date:"2026-12-22",scope:[0,1,2]},
+  sessions:[{date:"2026-11-04",d:1,content:"Nhân, chia luỹ thừa cùng cơ số",hw:"Bài luyện mức Thông hiểu"},{date:"2026-11-10",d:2,content:"Thứ tự thực hiện phép tính có ngoặc",hw:"Bài luyện mức Thông hiểu"}],
+  tests:[{date:"2026-10-24",type:"Kiểm tra tuần",scope:"Tập hợp",score:8,wrong:["0:2"]},{date:"2026-11-07",type:"Kiểm tra tuần",scope:"Luỹ thừa",score:6.5,wrong:["1:2","1:3"]}],review:{}},
+ anh6:{status:{0:2,1:1},exam:{name:"Kiểm tra cuối kì 1",date:"2026-12-17",scope:[0,1,2,3,4,5]},
+  sessions:[{date:"2026-11-05",d:1,content:"Thì hiện tại đơn",hw:"Bài luyện mức Nhận biết"}],
+  tests:[{date:"2026-11-06",type:"Kiểm tra tuần",scope:"Unit 1 từ vựng, ngữ pháp",score:7,wrong:["0:2","1:1"]}],review:{}}};
+const ALLSUBJ=["toan8","khtn8","anh8","toan6","anh6"];
+function conv(s){return{status:Object.fromEntries(Object.entries(s.status).map(([d,v])=>["0-"+d,v])),exam:s.exam,sessions:s.sessions.map(z=>({...z,d:"0-"+z.d})),tests:s.tests.map(t=>({...t,wrong:t.wrong.map(w=>"0-"+w)})),review:Object.fromEntries(Object.entries(s.review).map(([w,v])=>["0-"+w,v])),custom:{}}}
+const blank=()=>({status:{},exam:{name:"Kiểm tra cuối kì 1",date:"",scope:[0]},sessions:[],tests:[],review:{},custom:{}});
+const BASE={cs:0,students:[
+ {name:"Minh An",grade:"Lớp 8",order:["toan8","khtn8","anh8"],cur:"toan8",subjects:{toan8:conv(SAMPLE.toan),khtn8:conv(SAMPLE.khtn),anh8:conv(SAMPLE.anh)}},
+ {name:"Bảo Ngọc",grade:"Lớp 6",order:["toan6","anh6"],cur:"toan6",subjects:{toan6:conv(S6.toan6),anh6:conv(S6.anh6)}}]};
+{const t=BASE.students[0].subjects.toan8;t.lvDone={"0-0":[1,1,1,1],"0-1":[1,1,1,1],"0-2":[1,1,1,1],"0-3":[1,1,0,0],"1-0":[1,1,1,1],"1-1":[1,1,1,0],"1-2":[1,0,0,0]};
+ Object.entries(t.lvDone).forEach(([k,a])=>{const n=a.filter(Boolean).length;t.status[k]=n===4?2:n?1:0});
+ t.sessions.push({date:"2026-11",d:"1-0",content:"Bình phương của một tổng, một hiệu, mức Vận dụng",hw:"Bài luyện mức Vận dụng"},{date:"2026-11",d:"1-1",content:"Hiệu hai bình phương, mức Thông hiểu",hw:"Bài luyện mức Thông hiểu"});
+ t.tests[3].note="Sai ở bước chia hệ số âm";
+ t.notes=[{month:"2026-10",text:"Nắm chắc thu gọn và cộng trừ đa thức. Cần luyện thêm nhân đa thức mức Vận dụng."},{month:"2026-11",text:"Tiến bộ rõ ở nhân đa thức. Đang học hằng đẳng thức, làm bài cẩn thận hơn."}];}
+const KEY="sokem-mau-v1";
+let DB;try{DB=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!DB||!DB.students||!DB.students.length)DB=JSON.parse(JSON.stringify(BASE));
+const SD=()=>DB.students[DB.cs]||DB.students[0];
+const A=k=>SD().subjects[k];
+const ORD=()=>SD().order;
+let cur;const syncCur=()=>{if(!DB.students[DB.cs])DB.cs=0;const s=SD();if(!s.order.includes(s.cur))s.cur=s.order[0];cur=s.cur};syncCur();
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(DB))}catch(e){}};
+const TABS=[["tong","Tổng quan"],["ct","Chương trình & dạng bài"],["bh","Buổi học"],["kt","Kiểm tra"],["on","Lỗ hổng & ôn tập"]];
+let tab="tong";
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=d=>{if(!d)return"—";const p=d.split("-");return "T"+(+p[1])+"/"+p[0].slice(2)};
+const daysTo=d=>Math.round((new Date(d+"T00:00:00")-TODAY)/864e5);
+const STLBL=["Chưa dạy","Đang dạy","Đã xong"];
+const lvChip=l=>`<span class="chip l${l}">${LV[l]}</span>`;
+const P=()=>SUBJ[cur], S=()=>A(cur);
+const short=(k,i)=>SUBJ[k].chapters[i].split(".")[0];
+function D(k){const out=[];SUBJ[k].chapters.forEach((c,ci)=>{const bi=ci===0?SUBJ[k].dang:((SUBJ[k].byCh||{})[ci]||[]);const list=bi.concat(((A(k).custom||{})[ci])||[]);
+ list.forEach((d,di)=>out.push({key:ci+"-"+di,ch:ci,name:d.name,lv:d.lv,mine:di>=bi.length,mi:di-bi.length}))});return out}
+const getD=(k,key)=>D(k).find(x=>x.key===key);
+
+function levelBlock(d,l){const c=d.lv&&d.lv[l];
+ if(!c||(!c.how&&!c.ex&&!(c.bt||[]).length))return `<div class="lv"><h4>${lvChip(l)}</h4><p class="hint">Chưa có nội dung cho mức này.</p></div>`;
+ return `<div class="lv"><h4>${lvChip(l)}</h4>${c.how?`<p>${esc(c.how)}</p>`:""}${c.ex?`<div class="ex"><b>Ví dụ:</b> ${esc(c.ex)}</div>`:""}
+ ${(c.bt||[]).length?`<ol>${c.bt.map(b=>`<li>${esc(b[0])}</li>`).join("")}</ol>
+ <details class="showans"><summary>Xem đáp án</summary><ol>${c.bt.map(b=>`<li class="ans">${esc(b[1]||"—")}</li>`).join("")}</ol></details>`:""}</div>`}
+
+function gapsOf(k){const s=A(k),g={};
+ s.tests.forEach(t=>t.wrong.forEach(w=>{const[key,l]=w.split(":");if(!getD(k,key))return;g[w]=g[w]||{k:w,key,l:+l,count:0,last:""};g[w].count++;if(t.date>g[w].last)g[w].last=t.date}));
+ return Object.values(g).map(x=>({...x,d:getD(k,x.key),inScope:s.exam.scope.includes(+x.key.split("-")[0]),rv:s.review[x.k]||{}}))
+  .sort((a,b)=>(!!a.rv.done-!!b.rv.done)||(b.inScope-a.inScope)||(b.count-a.count)||(a.l-b.l)||b.last.localeCompare(a.last));}
+const gaps=()=>gapsOf(cur);
+
+function renderHeader(){const s=S();
+ $("#stuBar").innerHTML=`<label style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">Học sinh <select id="stuSel">${DB.students.map((s,i)=>`<option value="${i}" ${i===DB.cs?"selected":""}>${esc(s.name)} · ${esc(s.grade)}</option>`).join("")}</select></label><button class="ghost btn" data-go="hs">Quản lý học sinh</button>`;
+ $("#stu").textContent=SD().name;
+ $("#stuMeta").innerHTML=`<span>${esc(SD().grade)}</span><span>${ORD().map(k=>esc(SUBJ[k].name)+" · "+esc(SUBJ[k].book)).join(" | ")}</span>`;
+ $("#subj").innerHTML=ORD().map(k=>`<button aria-pressed="${k===cur}" data-subj="${k}">${SUBJ[k].name}</button>`).join("");
+ $("#examBox").innerHTML=s.exam.date?`<b>${fmt(s.exam.date)}</b><span><strong>${esc(s.exam.name)} ${P().name}</strong> · phạm vi ${s.exam.scope.map(i=>short(cur,i)).join(", ")||"chưa chọn"}</span>`:`<span class="hint">Chưa đặt kỳ thi cho ${P().name}.</span>`;
+ const open=gaps().filter(g=>!g.rv.done).length;
+ $("#tabs").innerHTML=TABS.map(([k,l])=>`<button role="tab" aria-selected="${k===tab}" data-t="${k}">${l}${k==="on"&&open?` <span class="chip bad">${open}</span>`:""}</button>`).join("");}
+
+const V={};
+V.tong=()=>{const p=P(),s=S(),all=D(cur),done=all.filter(d=>s.status[d.key]===2).length;
+ const tests=[...s.tests].sort((a,b)=>a.date.localeCompare(b.date));
+ const w=300,h=90,pd=20,xs=i=>pd+i*(w-2*pd)/Math.max(1,tests.length-1),ys=v=>h-pd-(v/10)*(h-2*pd);
+ const top=gaps().filter(g=>!g.rv.done).slice(0,3);
+ const three=ORD().map(k=>{const t=[...A(k).tests].sort((a,b)=>b.date.localeCompare(a.date))[0];const op=gapsOf(k).filter(g=>!g.rv.done).length;
+  return `<button class="sc" data-subj="${k}" aria-current="${k===cur}"><span class="eyebrow">${SUBJ[k].name}</span><span class="big">${t?t.score:"—"}</span><span class="hint">điểm gần nhất · ${op?`<span class="chip bad">${op} lỗ hổng</span>`:"không có lỗ hổng"}</span><span class="hint">${A(k).exam.date?`Thi ${fmt(A(k).exam.date)}`:"Chưa đặt kỳ thi"}</span></button>`}).join("");
+ return `<div class="three">${three}</div>
+ <p class="flow"><b>Chương trình</b>→<b>Dạy</b>→<b>Kiểm tra</b>→<b>Tìm lỗ hổng theo mức</b>→<b>Ôn từ mức dưới lên</b></p>
+ <div class="panel"><div class="row"><h2>Tiến độ ${p.name}</h2><span class="eyebrow">${done}/${all.length} dạng bài</span></div>
+  <div class="bar"><i style="width:${all.length?Math.round(done/all.length*100):0}%"></i></div>${termProgress()}
+  <p class="hint">Đang dạy: ${all.filter(d=>s.status[d.key]===1).map(d=>esc(d.name)).join(", ")||"—"}</p></div>
+ ${tests.length?`<div class="panel"><div class="row"><h2>Điểm kiểm tra ${p.name}</h2><span class="eyebrow">thang 10</span></div>
+  <svg viewBox="0 0 ${w} ${h}" width="100%" role="img" aria-label="Điểm các bài kiểm tra">
+  ${[5,10].map(v=>`<line x1="${pd}" x2="${w-pd}" y1="${ys(v)}" y2="${ys(v)}" stroke="var(--line)"/><text x="2" y="${ys(v)+3}">${v}</text>`).join("")}
+  <polyline points="${tests.map((t,i)=>xs(i)+","+ys(t.score)).join(" ")}" fill="none" stroke="var(--accent)" stroke-width="2"/>
+  ${tests.map((t,i)=>`<circle cx="${xs(i)}" cy="${ys(t.score)}" r="${i===tests.length-1?4.5:3}" fill="var(--accent)"/><text x="${xs(i)}" y="${h-4}" text-anchor="middle">${fmt(t.date)}</text><text x="${xs(i)}" y="${ys(t.score)-8}" text-anchor="middle" style="fill:var(--ink);font-weight:600">${t.score}</text>`).join("")}</svg></div>`:""}
+ <div class="panel"><div class="row"><h2>Cần ôn trước</h2><button class="ghost btn" data-go="on">Xem tất cả</button></div>
+  ${top.map(g=>`<div class="row"><span>${esc(g.d.name)} ${lvChip(g.l)}</span><span class="chip bad">sai ${g.count} lần</span></div>`).join("")||`<p class="hint">Không còn lỗ hổng nào chưa ôn.</p>`}</div>
+ ${notesPanel()}<form class="panel" id="fSet"><h2>Thông tin</h2><div class="fields">
+  <label>Tên học sinh<input id="eStu" value="${esc(SD().name)}"></label><label>Lớp<input id="eGrade" value="${esc(SD().grade)}"></label>
+  <label>Kỳ thi ${p.name}<input id="eName" value="${esc(s.exam.name)}"></label>
+  <label>Ngày thi<input type="month" id="eDate" value="${esc((s.exam.date||"").slice(0,7))}"></label></div>
+  <label>Phạm vi thi</label><div class="checks">${p.chapters.map((c,i)=>`<label><input type="checkbox" name="sc" value="${i}" ${s.exam.scope.includes(i)?"checked":""}>${esc(short(cur,i))}</label>`).join("")}</div>
+  <button class="btn">Lưu thông tin</button></form>`;};
+
+const addForm=ci=>`<details class="dg"><summary class="ghost btn" style="display:inline-flex">+ Thêm dạng bài</summary>
+ <form class="fAdd" data-ch="${ci}" style="margin-top:10px"><label>Tên dạng bài<input name="n" required placeholder="VD: Tính áp suất chất lỏng"></label>
+ ${LV.map((n,l)=>`<fieldset style="border:1px solid var(--line);border-radius:8px;padding:8px;display:grid;gap:6px;min-width:0"><legend>${lvChip(l)}</legend>
+  <label>Cách giải<input name="h${l}"></label><label>Ví dụ<input name="e${l}"></label>
+  <label>Bài luyện (mỗi dòng: đề | đáp án)<textarea name="b${l}" rows="2"></textarea></label></fieldset>`).join("")}
+ <button class="btn">Lưu dạng bài</button></form></details>`;
+
+V.ct=()=>{const p=P(),s=S(),all=D(cur);
+ return `<p class="hint">Bấm vào chương để mở. Tích các mức đã dạy cho từng dạng; tích đủ 4 mức là Đã xong. Trong lộ trình, tích một buổi là đánh dấu đã dạy hết các dạng của buổi đó. Chương nào chưa có nội dung, bạn tự thêm dạng bài từ tài liệu của mình. Viền màu là chương nằm trong phạm vi thi.</p>
+ ${termBar()}${p.chapters.map((c,ci)=>{if(!inTerm(ci))return"";const head=termHead(ci);const ds=all.filter(d=>d.ch===ci),dn=ds.filter(d=>s.status[d.key]===2).length,inS=s.exam.scope.includes(ci);
+  return head+`<details class="panel chapter" ${ci===0||ds.some(d=>s.status[d.key]===1)?"open":""} style="${inS?"border-color:var(--accent)":""}"><summary><span>${esc(c)}</span><span class="eyebrow">${ds.length?dn+"/"+ds.length:"chưa có dạng bài"}</span></summary>${planBlock(ci)}
+  ${ds.map(d=>{const st=s.status[d.key]||0,lv=getLv(s,d.key);return `<div class="dg"><div class="row"><strong>${esc(d.name)}</strong><span style="display:flex;gap:6px;align-items:center">${d.mine?`<button class="ghost btn" data-deld="${d.key}">Xoá</button>`:""}<span class="chip s${st}">${STLBL[st]}</span></span></div>
+  <div class="checks" style="margin-top:6px">${LV.map((n,l)=>`<label><input type="checkbox" data-lv="${d.key}:${l}" ${lv[l]?"checked":""}>${n}</label>`).join("")}</div>
+  <details style="margin-top:6px"><summary class="ghost btn" style="display:inline-block">Xem cách giải và bài luyện</summary>${[0,1,2,3].map(l=>levelBlock(d,l)).join("")}</details></div>`}).join("")}
+  ${addForm(ci)}</details>`}).join("")}`;};
+
+V.bh=()=>{const p=P(),s=S(),all=D(cur);return `<form class="panel" id="fSes"><h2>Ghi buổi học · ${p.name}</h2><div class="fields">
+ <label>Ngày<input type="month" id="sDate" value="${TODAY_ISO.slice(0,7)}" required></label>
+ <label>Dạng bài<select id="sD">${all.map(d=>`<option value="${d.key}">${esc(short(cur,d.ch))} · ${esc(d.name)}</option>`).join("")}</select></label></div>
+ <label>Đã dạy gì<input id="sContent" required placeholder="VD: nội dung đã dạy, mức độ"></label>
+ <label>Bài về nhà<input id="sHw" placeholder="VD: Bài luyện mức Vận dụng"></label>
+ <button class="btn">Lưu buổi học</button></form>
+ <div class="panel tbl"><table><thead><tr><th>Ngày</th><th>Nội dung</th><th>Bài về nhà</th><th></th></tr></thead><tbody>
+ ${s.sessions.map((x,i)=>[x,i]).sort((a,b)=>b[0].date.localeCompare(a[0].date)).map(([x,i])=>`<tr><td class="num">${fmt(x.date)}</td><td>${esc(x.content)}<br><span class="eyebrow">${esc((getD(cur,x.d)||{}).name||"")}</span></td><td>${esc(x.hw||"—")}</td><td><button class="ghost btn" data-dels="${i}">Xoá</button></td></tr>`).join("")}</tbody></table></div>`;};
+
+V.kt=()=>{const p=P(),s=S(),all=D(cur);return `<form class="panel" id="fTest"><h2>Nhập kết quả kiểm tra · ${p.name}</h2><div class="fields">
+ <label>Ngày<input type="month" id="tDate" value="${TODAY_ISO.slice(0,7)}" required></label>
+ <label>Loại<select id="tType"><option>Kiểm tra tuần</option><option>Kiểm tra tháng</option><option>Bài kiểm tra trên trường</option></select></label>
+ <label>Phạm vi<input id="tScope" placeholder="VD: ${esc(short(cur,0))}" required></label>
+ <label>Điểm (thang 10)<input type="number" id="tScore" min="0" max="10" step="0.25" required></label></div>
+ <label>Ghi chú<input id="tNote" placeholder="VD: Mất điểm do sai phép tính nhỏ"></label>
+ <label>Học sinh sai ở dạng nào, mức nào? <span>Tự chuyển sang tab Lỗ hổng.</span></label>
+ ${p.chapters.map((c,ci)=>{const ds=all.filter(d=>d.ch===ci);if(!ds.length)return"";return `<details ${ci===0?"open":""}><summary class="eyebrow" style="cursor:pointer;padding:6px 0">${esc(c)}</summary><div class="grid4">${ds.map(d=>`<div><div class="dn">${esc(d.name)}</div><div class="checks">${LV.map((n,l)=>`<label><input type="checkbox" name="w" value="${d.key}:${l}">${n}</label>`).join("")}</div></div>`).join("")}</div></details>`}).join("")}
+ <button class="btn">Lưu bài kiểm tra</button></form>
+ <div class="panel tbl"><table><thead><tr><th>Ngày</th><th>Bài</th><th>Điểm</th><th>Phần sai</th><th></th></tr></thead><tbody>
+ ${s.tests.map((t,i)=>[t,i]).sort((a,b)=>b[0].date.localeCompare(a[0].date)).map(([t,i])=>`<tr><td class="num">${fmt(t.date)}</td><td>${esc(t.type)}<br><span class="eyebrow">${esc(t.scope)}</span>${t.note?`<br><span class="hint">${esc(t.note)}</span>`:""}</td><td class="num">${t.score}</td><td>${t.wrong.map(w=>{const[k,l]=w.split(":");const d=getD(cur,k);return d?`<div>${esc(d.name)} ${lvChip(+l)}</div>`:""}).join("")||"—"}</td><td><button class="ghost btn" data-delt="${i}">Xoá</button></td></tr>`).join("")}</tbody></table></div>`;};
+
+V.on=()=>{const p=P(),g=gaps();
+ return `<p class="hint">Tự gom từ phần sai trong tab Kiểm tra của ${p.name}, theo từng dạng và mức. Ưu tiên: trong phạm vi thi, sai nhiều lần, mức thấp hơn trước, sai gần đây. Lộ trình ôn đi từ mức ngay dưới lên mức bị sai.</p>
+ <div class="panel">${g.map(x=>`<div class="gap ${x.rv.done?"done":""}"><div class="count" title="Số lần sai">${x.count}</div>
+ <div><strong>${esc(x.d.name)}</strong> ${lvChip(x.l)}<div class="meta"><span>${esc(short(cur,x.d.ch))}</span><span>Sai gần nhất ${fmt(x.last)}</span>${x.inScope?`<span class="chip s1">Trong phạm vi thi</span>`:""}</div>
+ <div class="route">Lộ trình: ${x.l>0?`<b>ôn lại ${LV[x.l-1]}</b> → `:""}<b>luyện ${LV[x.l]}</b></div></div>
+ <div class="ctrl"><label style="grid-auto-flow:column;align-items:center">Ôn tháng <input type="month" data-rd="${x.k}" value="${(x.rv.date||"").slice(0,7)}"></label>
+ <button class="chip stat ${x.rv.done?"s2":"s0"}" data-rdone="${x.k}">${x.rv.done?"Đã ôn ✓":"Chưa ôn"}</button></div>
+ <details style="grid-column:2"><summary class="ghost btn" style="display:inline-block">Bài ôn</summary>${x.l>0?levelBlock(x.d,x.l-1):""}${levelBlock(x.d,x.l)}</details></div>`).join("")||`<p class="hint">Chưa có lỗ hổng nào. Nhập bài kiểm tra để bắt đầu.</p>`}</div>
+ <div class="panel"><h2>Lịch ôn tập các môn</h2>${ORD().flatMap(k=>gapsOf(k).filter(x=>x.rv.date&&!x.rv.done).map(x=>({...x,k2:k}))).sort((a,b)=>a.rv.date.localeCompare(b.rv.date)).map(x=>`<div class="row"><span class="num" style="font-weight:600">${fmt(x.rv.date)}</span><span style="flex:1">${esc(x.d.name)} ${lvChip(x.l)}</span><span class="eyebrow">${SUBJ[x.k2].name}</span></div>`).join("")||`<p class="hint">Chọn ngày ôn cho từng lỗ hổng ở trên để lên lịch.</p>`}</div>`;};
+
+let lastView="";function render(){const vk=tab+"|"+cur+"|"+DB.cs+"|"+(termF[cur]||"");const keep=vk===lastView;const opens=keep?[...document.querySelectorAll("#view details")].map(d=>d.open):null;const y=window.scrollY;renderHeader();$("#view").innerHTML=`<section>${V[tab]()}</section>`;if(keep){document.querySelectorAll("#view details").forEach((d,i)=>{if(i<opens.length)d.open=opens[i]});window.scrollTo(0,y)}lastView=vk}
+document.addEventListener("click",e=>{
+ const sj=e.target.closest("[data-subj]");if(sj){cur=SD().cur=sj.dataset.subj;save();render();return}
+ const t=e.target.closest("[data-t],[data-go]");if(t){tab=t.dataset.t||t.dataset.go;render();scrollTo(0,0);return}
+ const s=S();
+ const st=e.target.closest("[data-st]");if(st){e.preventDefault();const i=st.dataset.st;s.status[i]=((s.status[i]||0)+1)%3;save();render();return}
+ const dd=e.target.closest("[data-deld]");if(dd){e.preventDefault();if(!dd.dataset.c){dd.dataset.c=1;dd.textContent="Bấm lần nữa để xoá";return}
+  const d=getD(cur,dd.dataset.deld);s.custom[d.ch].splice(d.mi,1);save();render();return}
+ const rd=e.target.closest("[data-rdone]");if(rd){const k=rd.dataset.rdone;s.review[k]={...(s.review[k]||{}),done:!(s.review[k]||{}).done};save();render();return}
+ const ds=e.target.closest("[data-dels]");if(ds){s.sessions.splice(+ds.dataset.dels,1);save();render();return}
+ const dt=e.target.closest("[data-delt]");if(dt){s.tests.splice(+dt.dataset.delt,1);save();render();return}
+ if(e.target.id==="copyData"){const txt=JSON.stringify(DB);const box=$("#dataBox");box.value=txt;
+  (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>{$("#dataMsg").textContent="Đã sao chép. Dán vào Ghi chú hoặc Zalo để lưu."},()=>{box.select();$("#dataMsg").textContent="Hãy sao chép đoạn chữ trong ô bên dưới."});return}
+ if(e.target.id==="loadData"){try{const x=JSON.parse($("#dataBox").value);if(!x.students||!x.students.length)throw 0;DB=x;syncCur();save();render();$("#dataMsg").textContent="Đã khôi phục dữ liệu."}catch(err){$("#dataMsg").textContent="Dữ liệu dán vào không đúng. Hãy dán lại đúng đoạn đã sao lưu."}return}
+ if(e.target.id==="reset"){if(e.target.dataset.c){DB=JSON.parse(JSON.stringify(BASE));syncCur();save();render();e.target.textContent="Đã khôi phục dữ liệu ví dụ";delete e.target.dataset.c}else{e.target.dataset.c=1;e.target.textContent="Bấm lần nữa: xoá dữ liệu hiện tại, quay về ví dụ"}}
+});
+document.addEventListener("change",e=>{const k=e.target.dataset&&e.target.dataset.rd;if(k){const s=S();s.review[k]={...(s.review[k]||{}),date:e.target.value};save();render()}});
+document.addEventListener("submit",e=>{e.preventDefault();const s=S(),f=e.target;
+ if(f.id==="fSes")s.sessions.push({date:$("#sDate").value,d:$("#sD").value,content:$("#sContent").value.trim(),hw:$("#sHw").value.trim()});
+ if(f.id==="fTest")s.tests.push({date:$("#tDate").value,type:$("#tType").value,scope:$("#tScope").value.trim(),note:$("#tNote").value.trim(),score:+$("#tScore").value,wrong:[...document.querySelectorAll('input[name="w"]:checked')].map(x=>x.value)});
+ if(f.id==="fSet"){SD().name=$("#eStu").value.trim()||"Học sinh";SD().grade=$("#eGrade").value.trim();s.exam={name:$("#eName").value.trim(),date:$("#eDate").value,scope:[...document.querySelectorAll('input[name="sc"]:checked')].map(x=>+x.value)}}
+ if(f.classList.contains("fAdd")){const ci=+f.dataset.ch,g=n=>(f.elements[n].value||"").trim();
+  const lv=[0,1,2,3].map(l=>({how:g("h"+l),ex:g("e"+l),bt:g("b"+l).split("\n").map(x=>x.trim()).filter(Boolean).map(x=>{const p=x.split("|");return [p[0].trim(),(p[1]||"").trim()]})}));
+  (s.custom[ci]=s.custom[ci]||[]).push({name:g("n"),lv})}
+ save();render();});
+
+V.hs=()=>`<p class="hint">Mỗi học sinh có sổ riêng. Bỏ chọn một môn thì môn đó chỉ bị ẩn, dữ liệu vẫn giữ lại; chọn lại là hiện ra như cũ.</p>
+ ${DB.students.map((s,i)=>`<div class="panel"><div class="row"><h2>${esc(s.name)} <span class="eyebrow">· ${esc(s.grade)}</span></h2><span style="display:flex;gap:6px;flex-wrap:wrap">${i!==DB.cs?`<button class="ghost btn" data-pick="${i}">Mở sổ</button>`:`<span class="chip s2">Đang mở</span>`}${DB.students.length>1?`<button class="ghost btn" data-delstu="${i}">Xoá học sinh</button>`:""}</span></div>
+  <div class="checks">${ALLSUBJ.map(k=>`<label><input type="checkbox" data-sub="${i}:${k}" ${s.order.includes(k)?"checked":""}>${esc(SUBJ[k].name)}</label>`).join("")}</div></div>`).join("")}
+ <form class="panel" id="fStu"><h2>Thêm học sinh</h2><div class="fields"><label>Tên<input id="nName" required placeholder="VD: Tên học sinh"></label><label>Lớp<input id="nGrade" placeholder="VD: Lớp 6"></label></div>
+  <label>Môn học</label><div class="checks">${ALLSUBJ.map(k=>`<label><input type="checkbox" name="ns" value="${k}">${esc(SUBJ[k].name)}</label>`).join("")}</div>
+  <p class="hint" id="stuMsg" aria-live="polite"></p><button class="btn">Thêm học sinh</button></form>`;
+document.addEventListener("click",e=>{
+ const pk=e.target.closest("[data-pick]");if(pk){DB.cs=+pk.dataset.pick;syncCur();save();tab="tong";render();return}
+ const ds=e.target.closest("[data-delstu]");if(ds){if(!ds.dataset.c){ds.dataset.c=1;ds.textContent="Bấm lần nữa để xoá cả sổ";return}
+  DB.students.splice(+ds.dataset.delstu,1);if(DB.cs>=DB.students.length)DB.cs=0;syncCur();save();render();}
+});
+document.addEventListener("change",e=>{
+ if(e.target.id==="stuSel"){DB.cs=+e.target.value;syncCur();save();render();return}
+ const sb=e.target.dataset&&e.target.dataset.sub;if(sb){const[i,k]=sb.split(":"),st=DB.students[+i];
+  if(e.target.checked){st.subjects[k]=st.subjects[k]||blank();st.order=ALLSUBJ.filter(x=>x===k||st.order.includes(x))}
+  else{if(st.order.length<=1){e.target.checked=true;return}st.order=st.order.filter(x=>x!==k)}
+  if(+i===DB.cs)syncCur();save();render();}
+});
+document.addEventListener("submit",e=>{if(e.target.id!=="fStu")return;e.stopImmediatePropagation();e.preventDefault();
+ const subs=[...document.querySelectorAll('input[name="ns"]:checked')].map(x=>x.value);
+ if(!subs.length){$("#stuMsg").textContent="Chọn ít nhất một môn.";return}
+ DB.students.push({name:$("#nName").value.trim(),grade:$("#nGrade").value.trim(),order:subs,cur:subs[0],subjects:Object.fromEntries(subs.map(k=>[k,blank()]))});
+ DB.cs=DB.students.length-1;syncCur();save();tab="tong";render();},true);
+function getLv(s,key){const x=(s.lvDone||{})[key];if(x)return x;const st=s.status[key]||0;return st===2?[1,1,1,1]:st===1?[1,0,0,0]:[0,0,0,0]}
+function setLv(s,key,arr){s.lvDone=s.lvDone||{};s.lvDone[key]=arr.map(v=>v?1:0);const n=arr.filter(Boolean).length;s.status[key]=n===4?2:n?1:0}
+document.addEventListener("change",e=>{const t=e.target,s=S();
+ if(t.dataset&&t.dataset.lv){const[k,l]=t.dataset.lv.split(":");const arr=getLv(s,k).slice();arr[+l]=t.checked?1:0;setLv(s,k,arr);save();render();return}
+ if(t.dataset&&t.dataset.plan){const[pk,ks]=t.dataset.plan.split("|");const keys=ks?ks.split(","):[];
+  if(keys.length)keys.forEach(it=>{const[k,ls]=it.split(":");const arr=getLv(s,k).slice();(ls||"0123").split("").forEach(l=>arr[+l]=t.checked?1:0);setLv(s,k,arr)});else{s.planDone=s.planDone||{};s.planDone[pk]=t.checked}
+  save();render();}
+});
+let termF={};
+const termsOf=()=>P().terms;
+function curTerm(){return termsOf()?(termF[cur]||"1"):"all"}
+function inTerm(ci){const t=termsOf(),f=curTerm();if(!t||f==="all")return true;const r=t[+f-1];return ci>=r[0]&&ci<=r[1]}
+function termHead(ci){const t=termsOf();if(!t)return"";const i=t.findIndex(r=>r[0]===ci);return i<0?"":`<h2 style="margin-top:6px">Học kì ${i+1}</h2>`}
+function termBar(){const t=termsOf();if(!t)return"";const f=curTerm();return `<div class="subj" role="group" aria-label="Lọc học kì">${[["all","Cả năm"],["1","HK1"],["2","HK2"]].map(([k,l])=>`<button aria-pressed="${f===k}" data-term="${k}">${l}</button>`).join("")}</div>`}
+function termProgress(){const t=termsOf();if(!t)return"";const s=S(),all=D(cur);return t.map((r,i)=>{const ds=all.filter(d=>d.ch>=r[0]&&d.ch<=r[1]);const dn=ds.filter(d=>s.status[d.key]===2).length;return `<div class="row" style="margin-top:4px"><span>Học kì ${i+1} <span class="eyebrow">· ${esc(short(cur,r[0]))}–${esc(short(cur,r[1]).replace(P().unit+" ",""))}</span></span><span class="eyebrow">${dn}/${ds.length} dạng bài</span></div><div class="bar"><i style="width:${ds.length?Math.round(dn/ds.length*100):0}%"></i></div>`}).join("")}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-term]");if(b){termF[cur]=b.dataset.term;render()}});
+function notesPanel(){const s=S(),ns=(s.notes||[]).map((n,i)=>[n,i]).sort((a,b)=>b[0].month.localeCompare(a[0].month));
+ return `<div class="panel"><h2>Nhận xét</h2>
+ ${ns.map(([n,i])=>`<div class="row" style="align-items:flex-start;flex-wrap:nowrap"><span class="num" style="font-weight:600;flex:none">${fmt(n.month)}</span><span style="flex:1;min-width:0">${esc(n.text)}</span><button class="ghost btn" data-delnote="${i}">Xoá</button></div>`).join("")||`<p class="hint">Chưa có nhận xét. Ghi nhận xét theo tháng để làm báo cáo phụ huynh.</p>`}
+ <form id="fNote" style="display:grid;gap:8px"><div class="fields"><label>Tháng<input type="month" id="nMonth" value="${TODAY_ISO.slice(0,7)}" required></label></div>
+ <label>Nhận xét<textarea id="nText" rows="2" required placeholder="VD: Nắm chắc kiến thức, cần cẩn thận khi tính toán"></textarea></label>
+ <button class="btn">Lưu nhận xét</button></form></div>`}
+document.addEventListener("submit",e=>{if(e.target.id!=="fNote")return;e.stopImmediatePropagation();e.preventDefault();const s=S();
+ s.notes=s.notes||[];s.notes.push({month:$("#nMonth").value,text:$("#nText").value.trim()});save();render()},true);
+document.addEventListener("click",e=>{const d=e.target.closest("[data-delnote]");if(d){const s=S();s.notes.splice(+d.dataset.delnote,1);save();render()}});
+render();
+
+</script>
+
+</body>
+</html>
